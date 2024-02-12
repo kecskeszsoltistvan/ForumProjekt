@@ -9,6 +9,7 @@ body{
 .navbar a{
     color: #fff !important;
     font-weight: 600;
+    font-size: 20px;
 }
 
 .nav_img{
@@ -16,3 +17,29 @@ body{
     margin: 8px;
 }
 
+.png-mid{
+    width: 48px;
+    height: 48px;
+}
+.btn{
+    color: #fff !important;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+    border: #676F9E 1px solid;
+    background-color: #676F9E;
+}
+.footer{
+    background-color: #2E3150;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.large-btn{
+    width: 282.5px;
+}
+.btn-space {
+    margin-right: auto;
+    margin-left: auto;
+}
