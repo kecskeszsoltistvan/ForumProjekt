@@ -1,0 +1,18 @@
+body{
+    background-color: #434669;
+}
+
+.navbar{
+    background-color: #2E3150 !important;
+}
+
+.navbar a{
+    color: #fff !important;
+    font-weight: 600;
+}
+
+.nav_img{
+    width: 64px;
+    margin: 8px;
+}
+
