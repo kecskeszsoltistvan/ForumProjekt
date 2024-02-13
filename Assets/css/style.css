@@ -33,6 +33,7 @@ body{
     left: 0;
     bottom: 0;
     width: 100%;
+    border-top: 3px solid #434669;
 }
 
 
@@ -49,4 +50,41 @@ h1{
     padding: 20px;
     color: white;
     font-weight: 600;
+}
+
+.rolunkcard{
+    display: flex;
+    background-color: #2E3150;
+    color: white;
+    border-radius: 20px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-width: 70%;
+    min-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    align-items: stretch;
+
+    
+}
+
+.rolunkkepek{
+    width: 166px;
+    height: 166px;
+    margin: 30px;
+}
+
+.adatok{
+    flex-grow: 2;
+    padding: 25px 30px 25px 0px;
+}
+hr{
+    height: 5px;
+    border-top: 5px solid #434669;
+    opacity: 100%;
+}
+#rolunkkartyak:last-child{
+    margin-bottom: 70px;
 }
