@@ -12,29 +12,36 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <!--<a class="navbar-brand" href="#">Navbar</a>-->
-            <img class="nav_img" src="icons/crowd-of-users.png" alt="">
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Kedvencek</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Összes</a>
-                    </li>
-                </ul>
+            <div>
+                <img class="nav_img navbar-brand" href="#" src="icons/crowd-of-users.png" alt="">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
-            <img class="nav_img png-mid" src="icons/email.png" alt="">
-            <img class="nav_img png-mid" src="icons/profile-user.png" alt="">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="#">Kedvencek</a>
+                    <a class="nav-link" href="#">Összes</a>
+                </div>
+            </div>
+            <div>
+                <img class="nav_img png-mid m-1" src="icons/email.png" alt="">
+                <img class="nav_img png-mid m-1" src="icons/profile-user.png" alt="">
+            </div>
         </div>
     </nav>
+
+    <main ng-wiev>
+        
+    </main>
+
     <footer class="footer">
-        <div class="container-fluid p-3">
-            <div class="row">
-                <button type="button" class="btn large-btn btn-space">Szabályzat</button>
-                <button type="button" class="btn large-btn btn-space">GYAK</button>
-                <button type="button" class="btn large-btn btn-space">Legutóbbi frissítés</button>
-                <button type="button" class="btn large-btn btn-space">Rólunk</button>
+        <div class="container-fluid m-2">
+            <div class="col d-flex justify-content-around flex-md-row flex-sm-column justify-content-around align-content-sm-between">
+                <button type="button" class="btn large-btn btn-space footer_btn">Szabályzat</button>
+                <button type="button" class="btn large-btn btn-space footer_btn">GYAK</button>
+                <button type="button" class="btn large-btn btn-space footer_btn">Legutóbbi frissítés</button>
+                <button type="button" class="btn large-btn btn-space footer_btn">Rólunk</button>
             </div>
         </div>
     </footer>
