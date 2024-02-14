@@ -1,2 +1,0 @@
-# ForumProjekt
-Csoport Munak
