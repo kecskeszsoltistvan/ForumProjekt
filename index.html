@@ -10,12 +10,14 @@
     <link rel="stylesheet" href="Assets/css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container-fluid">
             <div>
                 <img class="nav_img navbar-brand" href="#" src="icons/crowd-of-users.png" alt="">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+                    <span class="navbar-toggler-icon">
+                        <i class="fas fa-bars" style="color:rgb(241, 8, 8); font-size:28px;"></i>
+                    </span>
                 </button>
             </div>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -24,7 +26,7 @@
                     <a class="nav-link" href="#">Összes</a>
                 </div>
             </div>
-            <div>
+            <div class="sticky-top">
                 <img class="nav_img png-mid m-1" src="icons/email.png" alt="">
                 <img class="nav_img png-mid m-1" src="icons/profile-user.png" alt="">
             </div>
@@ -37,11 +39,11 @@
 
     <footer class="footer">
         <div class="container-fluid m-2">
-            <div class="col d-flex justify-content-around flex-md-row flex-sm-column justify-content-around align-content-sm-between">
-                <button type="button" class="btn large-btn btn-space footer_btn">Szabályzat</button>
-                <button type="button" class="btn large-btn btn-space footer_btn">GYAK</button>
-                <button type="button" class="btn large-btn btn-space footer_btn">Legutóbbi frissítés</button>
-                <button type="button" class="btn large-btn btn-space footer_btn">Rólunk</button>
+            <div id="footer_elements" class="row d-flex flex-md-row justify-content-around">
+                <button type="button" class="btn mb-1 large-btn btn-space footer_btn">Szabályzat</button>
+                <button type="button" class="btn mb-1 large-btn btn-space footer_btn">GYAK</button>
+                <button type="button" class="btn mb-1 large-btn btn-space footer_btn">Legutóbbi frissítés</button>
+                <button type="button" class="btn mb-1 large-btn btn-space footer_btn">Rólunk</button>
             </div>
         </div>
     </footer>
