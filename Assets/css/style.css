@@ -64,3 +64,8 @@ h1{
     text-align: center;
     padding: 10px 10px 5px 10px;
 }
+
+img{
+    height: 36px;
+    width: 36px;
+}
