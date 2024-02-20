@@ -43,7 +43,7 @@ body{
 
 .content{
     background-color: #2E3150;
-    padding: 40px 40px 40px 40px;
+    padding: 20px 20px 40px 20px;
     border-radius: 20px;
     text-align: justify;
     margin: 10px auto;
@@ -65,7 +65,17 @@ h1{
     padding: 10px 10px 5px 10px;
 }
 
-img{
+.jelzes{
     height: 36px;
     width: 36px;
+    margin-right: 10px;
+}
+
+.close{
+    height: 24px;
+    width: 24px;
+    float: right;
+}
+#postas:last-child{
+    margin-bottom: 20px;
 }
