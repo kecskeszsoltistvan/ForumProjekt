@@ -8,5 +8,5 @@ app.run(function($rootScope){
 
 
 document.getElementById("rolunkBTN").onclick = function () {
-    location.href = "Assets/html/rolunk.html";
+    location.href = "Views/rolunk.html";
 };

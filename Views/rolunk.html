@@ -1,44 +1,8 @@
-<!DOCTYPE html>
-<html lang="hu" ng-app="forumApp">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
-    
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <div>
-                <img class="nav_img navbar-brand" href="#" src="../../icons/crowd-of-users.png" alt="">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="#">Kedvencek</a>
-                    <a class="nav-link" href="#">Összes</a>
-                </div>
-            </div>
-            <div>
-                <img class="nav_img png-mid m-1" src="../../icons/email.png" alt="">
-                <img class="nav_img png-mid m-1" src="../../icons/profile-user.png" alt="">
-            </div>
-        </div>
-    </nav>
-
-    
-
-    <main ng-wiev>
         <h1>Rólunk oldal</h1>
 
         <div id="rolunkkartyak" class="container-fluid">
             <div class="rolunkcard">
-                <img class="rolunkkepek" src="../../icons/zoli.png" alt="">
+                <img class="rolunkkepek" src="../icons/zoli.png" alt="">
                 <div class="adatok">
                     <h2>Auer Zoltán</h2>
                     <hr>
@@ -48,7 +12,7 @@
             </div>
 
             <div class="rolunkcard">
-                <img class="rolunkkepek" src="../../icons/csoki.png" alt="">
+                <img class="rolunkkepek" src="../icons/csoki.png" alt="">
                 <div class="adatok">
                     <h2>Csóka András</h2>
                     <hr>
@@ -57,7 +21,7 @@
             </div>
 
             <div class="rolunkcard">
-                <img class="rolunkkepek" src="../../icons/dudi.png" alt="">
+                <img class="rolunkkepek" src="../icons/dudi.png" alt="">
                 <div class="adatok">
                     <h2>Dudás Levente</h2>
                     <hr>
@@ -66,7 +30,7 @@
             </div>
 
             <div class="rolunkcard">
-                <img class="rolunkkepek" src="../../icons/zsolt.png" alt="">
+                <img class="rolunkkepek" src="../icons/zsolt.png" alt="">
                 <div class="adatok">
                     <h2>Kecskés Zsolt István</h2>
                     <hr>
@@ -75,22 +39,3 @@
             </div>
 
         </div>
-        
-    </main>
-
-    <footer class="footer">
-        <div class="container-fluid m-2">
-            <div class="col d-flex justify-content-around flex-md-row flex-sm-column justify-content-around align-content-sm-between">
-                <button type="button" class="btn large-btn btn-space footer_btn">Szabályzat</button>
-                <button type="button" class="btn large-btn btn-space footer_btn">GYAK</button>
-                <button type="button" class="btn large-btn btn-space footer_btn">Legutóbbi frissítés</button>
-                <button type="button" class="btn large-btn btn-space footer_btn">Rólunk</button>
-            </div>
-        </div>
-    </footer>
-
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/angular.min.js"></script>
-    <script src="../js/app.js"></script>
-</body>
-</html>
