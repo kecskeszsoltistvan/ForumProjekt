@@ -57,3 +57,7 @@ body{
 .footer_btn:hover{
     background-color: #F9B079;
 }
+
+main{
+    padding-top: 90px;
+}

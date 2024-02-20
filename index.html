@@ -27,14 +27,14 @@
                 </div>
             </div>
             <div class="position-absolute top-0 end-0 mt-2 d-flex">
-                <a class="nav-link" href="#!/login"><img class="nav_img png-mid m-1" src="icons/email.png"></a>
-                <a class="nav-link" href="#!/reg"><img class="nav_img png-mid m-1" src="icons/profile-user.png"></a>
+                <a class="nav-link" href="#!/mail"><img class="nav_img png-mid m-1" src="icons/email.png"></a>
+                <a class="nav-link" href="#" ng-click="user()"><img class="nav_img png-mid m-1" src="icons/profile-user.png"></a>
             </div>
         </div>
     </nav>
 
-    <main ng-view>
-        
+    <main ng-view>  
+
     </main>
 
     <footer class="footer">
@@ -50,6 +50,9 @@
 
     <script src="Assets/js/bootstrap.min.js"></script>
     <script src="Assets/js/angular.min.js"></script>
+    <script src="Assets/js/angular-route.min.js"></script>
+    <script src="Assets/js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="Modules/reg.js"></script>
     <script src="Assets/js/app.js"></script>
 </body>
 </html>
