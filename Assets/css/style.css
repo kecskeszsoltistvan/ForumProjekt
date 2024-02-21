@@ -76,6 +76,12 @@ h1{
     width: 24px;
     float: right;
 }
+
 #postas:last-child{
     margin-bottom: 20px;
+}
+
+.datum{
+    color: #676F9E;
+    float: right;
 }
