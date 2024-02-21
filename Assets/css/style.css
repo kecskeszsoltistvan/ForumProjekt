@@ -40,6 +40,11 @@ body{
     border-radius: 10px;
     background-color: #676F9E;
 }
+
+.btn:hover{
+    background-color: #F9B079;
+}
+
 .footer{
     background-color: #2E3150;
     position: fixed;
@@ -60,4 +65,8 @@ body{
 
 main{
     padding-top: 90px;
+}
+
+.modal-dialog{
+    background-color: #2E3150;
 }
