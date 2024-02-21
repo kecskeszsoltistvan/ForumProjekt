@@ -83,5 +83,40 @@ h1{
 
 .datum{
     color: #676F9E;
-    float: right;
+    float: left;
+}
+
+#tulaj{
+    color: #676F9E;
+    font-size: 15px;
+}
+
+.profil{
+    background-color: #2E3150;
+    padding: 20px 20px 40px 20px;
+    border-radius: 20px;
+    text-align: justify;
+    margin: 10px auto;
+    color: white;
+    font-size: 18px;
+    max-width: 180px;
+    width: 80vw;
+    float: left;
+}
+.adatlap{
+    background-color: #2E3150;
+    padding: 20px 20px 40px 20px;
+    border-radius: 20px;
+    text-align: justify;
+    margin: 10px auto;
+    color: white;
+    font-size: 18px;
+    max-width: 1000px;
+    width: 80vw;
+    min-width: 300px;
+}
+
+#profilkep{
+    width: 130px;
+    height: 130px;
 }
