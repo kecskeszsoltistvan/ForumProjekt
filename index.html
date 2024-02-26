@@ -37,23 +37,25 @@
     
       
     <!-- Reg Modal Form -->
-    <div class="modal fade" id="Reg_modal" tabindex="-1">
+    <div class="modal fade" id="Reg_modal" tabindex="-1" >
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Regisztráció</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-3">
                             <label for="username" class="form-label">Felhasználónév</label>
-                            <input type="text" class="form-control" id="username">
+                            <input type="text" class="form-control" id="username" ng-model="user">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email-cím</label>
                             <input type="email" class="form-control" id="email">
+                            <!--
                             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            -->
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Jelszó</label>
@@ -61,11 +63,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="confirm" class="form-label">Jelszó megerősítése</label>
-                            <input type="confirm" class="form-control" id="confirm">
+                            <input type="password" class="form-control" id="confirm">
                         </div>
                         <div class="mb-3 d-flex justify-content-around">
-                            <button type="submit" class="btn">Regisztráció</button>
-                            <button type="submit" class="btn" data-bs-toggle="modal" data-bs-target="#Login_modal">Már van fiókom</button>
+                            <button type="submit" class="btn" ng-click="registration()">Regisztráció</button>
+                            <button type="submit" class="btn" data-bs-toggle="modal" data-bs-target="#Login_modal" ">Már van fiókom</button>
                         </div>
                     </form>
                 </div>
@@ -87,7 +89,9 @@
                         <div class="mb-3">
                             <label for="email" class="form-label">Email-cím</label>
                             <input type="email" class="form-control" id="email">
+                            <!--
                             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            -->
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Jelszó</label>
@@ -131,7 +135,7 @@
     <script src="Assets/js/angular.min.js"></script>
     <script src="Assets/js/angular-route.min.js"></script>
     <script src="Assets/js/ui-bootstrap-tpls-2.5.0.min.js"></script>
-    <script src="Modules/reg.js"></script>
+    <script src="Controllers/userCtrl.js"></script>
     <script src="Assets/js/app.js"></script>
 </body>
 </html>

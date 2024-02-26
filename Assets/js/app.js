@@ -8,13 +8,18 @@ app.run(function($rootScope){
 
 app.config(function($routeProvider){
     $routeProvider
+    /*
     .when("/login", {
         templateUrl: "Views/login.html",
     })
-    .when("/reg", {
-        templateUrl: "Views/registration.html",
-    })
+    */
     .otherwise(
         {redirecTo: "/login"}
     )
 })
+
+$rootScope.user = ""
+
+$rootScope.registration = function(){
+    console.log("$rootScope.user.username")
+}
