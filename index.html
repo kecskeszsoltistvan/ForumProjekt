@@ -7,6 +7,7 @@
     <title>{{title}}</title>
     
     <link rel="stylesheet" href="Assets/css/bootstrap.css">
+    <link rel="stylesheet" href="Assets/css/ng-notify.min.css">
     <link rel="stylesheet" href="Assets/css/style.css">
 </head>
 <body>
@@ -37,7 +38,7 @@
     
       
     <!-- Reg Modal Form -->
-    <div class="modal fade" id="Reg_modal" tabindex="-1" >
+    <div class="modal fade" id="Reg_modal" tabindex="-1" ng-controller="regUserCtrl" >
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -48,26 +49,26 @@
                     <form>
                         <div class="mb-3">
                             <label for="username" class="form-label">Felhasználónév</label>
-                            <input type="text" class="form-control" id="username" ng-model="user">
+                            <input type="text" class="form-control" id="username" ng-model="user.username">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email-cím</label>
-                            <input type="email" class="form-control" id="email">
+                            <input type="email" class="form-control" id="email" ng-model="user.email">
                             <!--
                             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                             -->
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Jelszó</label>
-                            <input type="password" class="form-control" id="password">
+                            <input type="password" class="form-control" id="password" ng-model="user.password">
                         </div>
                         <div class="mb-3">
                             <label for="confirm" class="form-label">Jelszó megerősítése</label>
-                            <input type="password" class="form-control" id="confirm">
+                            <input type="password" class="form-control" id="confirm" ng-model="user.confirm">
                         </div>
                         <div class="mb-3 d-flex justify-content-around">
                             <button type="submit" class="btn" ng-click="registration()">Regisztráció</button>
-                            <button type="submit" class="btn" data-bs-toggle="modal" data-bs-target="#Login_modal" ">Már van fiókom</button>
+                            <button type="submit" class="btn" data-bs-toggle="modal" data-bs-target="#Login_modal">Már van fiókom</button>
                         </div>
                     </form>
                 </div>
@@ -134,8 +135,9 @@
     <script src="Assets/js/bootstrap.min.js"></script>
     <script src="Assets/js/angular.min.js"></script>
     <script src="Assets/js/angular-route.min.js"></script>
+    <script src="Assets/js/sha1.js"></script>
+    <script src="Assets/js/ng-notify.min.js"></script>
     <script src="Assets/js/ui-bootstrap-tpls-2.5.0.min.js"></script>
-    <script src="Controllers/userCtrl.js"></script>
     <script src="Assets/js/app.js"></script>
 </body>
 </html>

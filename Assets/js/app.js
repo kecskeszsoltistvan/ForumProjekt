@@ -18,8 +18,28 @@ app.config(function($routeProvider){
     )
 })
 
-$rootScope.user = ""
+app.controller("regUserCtrl", ["$scope", function($scope){
+    $scope.user = {}
 
-$rootScope.registration = function(){
-    console.log("$rootScope.user.username")
-}
+    $scope.registration = function(){
+        if($scope.user.username == null || $scope.user.email == null || $scope.user.password == null || $scope.user.confirm == null){
+            alert("Nem adtál meg minden adatot!")
+        }else{
+            if($scope.user.password != $scope.user.confirm){
+                alert("Nem egyeznek meg a jelszavak!")
+            }else{
+                let data = {
+                    table: "users",
+                    email: $scope.user.email,
+                    name: $scope.user.name,
+                    password: CryptoJS.SHA1($scope.user.password).toString()
+                }
+                /*
+                axios.post($rootScope.serverUrl + "/db/registration", data).then(res => {
+                    alert(res.data[0].msg);
+                })
+                */
+            }
+        }
+    }
+}])
