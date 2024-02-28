@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "angular-ui-notification": "^0.3.6"
+    "angular-ui-notification": "^0.3.6",
+    "ng-notify": "^0.7.1"
   }
 }
