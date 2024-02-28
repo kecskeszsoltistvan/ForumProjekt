@@ -4,6 +4,7 @@ body{
 
 .navbar{
     background-color: #2E3150 !important;
+    border-bottom: 3px solid #434669;
 }
 
 .navbar a{
