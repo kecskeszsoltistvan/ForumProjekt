@@ -55,9 +55,10 @@ body{
 }
 .footer_btn:hover{
     background-color: #F9B079;
+}
 h1{
     text-align: center;
-    padding: 20px;
+    padding: 100px 20px 20px 20px;
     color: white;
     font-weight: 600;
 }
@@ -94,4 +95,12 @@ hr{
 }
 #rolunkkartyak:last-child{
     margin-bottom: 70px;
+}
+.szellős{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    min-height: 800px;
+    margin: 20px;
 }
