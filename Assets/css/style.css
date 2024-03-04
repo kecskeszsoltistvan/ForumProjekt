@@ -4,6 +4,7 @@ body{
 
 .navbar{
     background-color: #2E3150 !important;
+    border-bottom: 3px solid #434669;
 }
 
 .navbar a{
@@ -55,11 +56,13 @@ body{
 }
 .footer_btn:hover{
     background-color: #F9B079;
+}
 h1{
     text-align: center;
     padding: 20px;
     color: white;
     font-weight: 600;
+    margin-top: 90px;
 }
 
 .rolunkcard{
@@ -75,17 +78,18 @@ h1{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
+    margin-top: 20px;
     align-items: stretch;
 }
 
 .rolunkkepek{
     width: 166px;
     height: 166px;
-    margin: 30px;
+    margin: 30px 10px 30px 30px;
 }
 .adatok{
     flex-grow: 2;
-    padding: 25px 30px 25px 0px;
+    padding: 25px 30px 25px 20px;
 }
 hr{
     height: 5px;
@@ -93,5 +97,8 @@ hr{
     opacity: 100%;
 }
 #rolunkkartyak:last-child{
-    margin-bottom: 70px;
+    margin-bottom: 80px;
+}
+h4{
+    text-decoration: underline;
 }
