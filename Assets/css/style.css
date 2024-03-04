@@ -90,12 +90,23 @@ h1{
     float: right;
 }
 
+.cim{
+    float: left;
+}
+
+.user{
+    float: right;
+    display: flex;
+    flex-direction: row;
+    max-width: 800px;
+    min-width: 150px;
+}
+
 .name{
-    
+    margin: 15px 10px 10px 10px;
 }
 
 .profil{
     height: 51px;
     width: 51px;
-    float: right;
 }
