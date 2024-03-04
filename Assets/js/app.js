@@ -52,7 +52,7 @@ app.controller("loginUserCtrl",  function($scope,ngNotify){
         if($scope.user.email == null || $scope.user.password == null){
             ngNotify.set("Nem adtál meg minden adatot!", "error");
         }else{
-            if($scope.user.password != $scope.user.confirm){
+            if($scope.user.password != $scope.user.password){
                 ngNotify.set("Nem egyeznek meg a jelszavak!", "error")
             }else{
                 let data = {
@@ -60,7 +60,7 @@ app.controller("loginUserCtrl",  function($scope,ngNotify){
                     email: $scope.user.email,
                     password: CryptoJS.SHA1($scope.user.password).toString()
                 }
-
+                
                 /*
                 axios.post($rootScope.serverUrl + "/db/registration", data).then(res => {
                     alert(res.data[0].msg);
