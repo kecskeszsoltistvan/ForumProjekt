@@ -1,5 +1,8 @@
 var app = angular.module("forumApp", ["ngRoute", "ui.bootstrap", "ngNotify"])
 
+$rootScope.suerverUrl = "http://localhost:3000"
+
+
 app.run(function($rootScope){
     $rootScope.title = "Fórum"
 
@@ -29,7 +32,6 @@ app.controller("regUserCtrl",  function($scope,ngNotify){
                 ngNotify.set("Nem egyeznek meg a jelszavak!", "error")
             }else{
                 let data = {
-                    table: "users",
                     email: $scope.user.email,
                     name: $scope.user.name,
                     password: CryptoJS.SHA1($scope.user.password).toString()
@@ -56,16 +58,15 @@ app.controller("loginUserCtrl",  function($scope,ngNotify){
                 ngNotify.set("Nem egyeznek meg a jelszavak!", "error")
             }else{
                 let data = {
-                    table: "users",
                     email: $scope.user.email,
                     password: CryptoJS.SHA1($scope.user.password).toString()
                 }
                 
-                /*
-                axios.post($rootScope.serverUrl + "/db/registration", data).then(res => {
+                
+                axios.get($rootScope.serverUrl + "/users", data).then(res => {
                     alert(res.data[0].msg);
                 })
-                */
+                
             }
         }
     }
