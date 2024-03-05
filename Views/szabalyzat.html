@@ -1,59 +1,25 @@
-<!DOCTYPE html>
-<html lang="hu" ng-app="forumApp">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
-    
-    <link rel="stylesheet" href="../Assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../Assets/css/style.css">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
-        <div class="container-fluid position-relative">
-            <div>
-                <img class="nav_img navbar-brand" href="#" src="../icons/crowd-of-users.png" alt="">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-                    <span class="navbar-toggler-icon">
-                        <i class="fas fa-bars"></i>
-                    </span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="#">Kedvencek</a>
-                    <a class="nav-link" href="#">Összes</a>
-                </div>
-            </div>
-            <div class="position-absolute top-0 end-0 mt-2">
-                <img class="nav_img png-mid m-1" src="../icons/email.png" alt="">
-                <img class="nav_img png-mid m-1" src="../icons/profile-user.png" alt="">
-            </div>
-        </div>
-    </nav>
-
-    <main ng-wiev>
         <h1>Szabályzat</h1>
         <div id="rolunkkartyak">
             <div class="rolunkcard">
+                <img src="../icons/danger.png" class="rolunkkepek_kis" id="szab_kep">
+                <div class="adatok">
+                    <h2 class="important">OLVASS EL!</h2>
+                    <p>Ez az oldal a szabályzatot tartalmazza. Olvasd el figyelmesen, mert a szabályzat nem tudása nem mentesít fel betartása alól, és súlyosságától függően szabunk ki büntetést!</p>
+                </div>
+            </div>
+            <div class="rolunkcard">
                 <ol class="szellős">
-                    <li class="container-fluid">
-                        <div class=" row">
-                            <div class="col-8">Ne posztolj / ossz meg / küldj el másoknak privát üzenetben: 
-                                <ul>
-                                    <li>Gyűlölködést, bármiféle utálatot bárki / bármi felé </li>
-                                    <li>Felnőtt tartalmakat.</li>
-                                    <li>Grafikus tartalmakat.</li>
-                                    <li>Spam (vagy üres, értelmetlen) üzeneteket.</li>
-                                    <li>Vírusos linkeket, hirdetéseket, fájlokat, weboldalakat.</li>
-                                    <li>Személyes/Érzékeny információt másokról.</li>
-                                    <li>Túlformázott szöveget, legyen csak az kiemelve, ami lényeges.</li>
-                                    <li>Zsarolást, fenyegetést.</li>
-                                </ul>
-                            </div>
-                        <img src="../icons/danger.png" class="col-4" id="szab_kep">
-                    </div>
+                    <li>Ne posztolj / ossz meg / küldj el másoknak privát üzenetben: 
+                    <ul>
+                        <li>Gyűlölködést, bármiféle utálatot bárki / bármi felé </li>
+                        <li>Felnőtt tartalmakat.</li>
+                        <li>Grafikus tartalmakat.</li>
+                        <li>Spam (vagy üres, értelmetlen) üzeneteket.</li>
+                        <li>Vírusos linkeket, hirdetéseket, fájlokat, weboldalakat.</li>
+                        <li>Személyes/Érzékeny információt másokról.</li>
+                        <li>Túlformázott szöveget, legyen csak az kiemelve, ami lényeges.</li>
+                        <li>Zsarolást, fenyegetést.</li>
+                    </ul>
                     </li>
                     <li>Ne zaklass más felhasználókat privátban, vagy az alfórumuk kommentszekciójában!</li>
                     <li>Bármilyen tartalom, ami az első pontban le van írva jelenthető és ha kérhetjük, jelentsd is! </li>
@@ -68,21 +34,3 @@
                 </ol> 
             </div>
         </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container-fluid m-2">
-            <div id="footer_elements" class="row d-flex flex-md-row justify-content-around">
-                <button type="button" class="btn mb-1 large-btn btn-space footer_btn">Szabályzat</button>
-                <button type="button" class="btn mb-1 large-btn btn-space footer_btn">GYAK</button>
-                <button type="button" class="btn mb-1 large-btn btn-space footer_btn">Legutóbbi frissítés</button>
-                <button type="button" class="btn mb-1 large-btn btn-space footer_btn">Rólunk</button>
-            </div>
-        </div>
-    </footer>
-
-    <script src="../Assets/js/bootstrap.min.js"></script>
-    <script src="../Assets/js/angular.min.js"></script>
-    <script src="../Assets/js/app.js"></script>
-</body>
-</html>

@@ -107,8 +107,13 @@ hr{
 }
 #szab_kep{
     margin-right: 55px;
-    width: 20vw;
-    max-width: 200px;
-    height: auto;
-    align-self: flex-end;
+    align-self: center;
+}
+.rolunkkepek_kis{
+    width: 100px;
+    height: 100px;
+    margin: 30px;
+}
+.important{
+    color: #fa7b77;
 }
