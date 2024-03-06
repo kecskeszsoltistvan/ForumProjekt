@@ -206,3 +206,59 @@ h3{
     height: 51px;
     width: auto;
 }
+.datum{
+    color: #676F9E;
+}
+
+#tulaj{
+    color: #676F9E;
+    font-size: 15px;
+}
+
+.profil{
+    background-color: #2E3150;
+    padding: 20px 20px 40px 20px;
+    border-radius: 20px;
+    text-align: justify;
+    margin: 10px 10px 10px 10px;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.adatlap{
+    background-color: #2E3150;
+    padding: 20px 20px 40px 20px;
+    border-radius: 20px;
+    text-align: justify;
+    margin: 10px 10px 10px 10px;
+    color: white;
+    font-size: 18px;
+}
+
+.warning{
+    height: 32px;
+    width: 32px;
+    float: left;
+}
+
+#user_avatar{
+    height: 32px;
+    width: 32px;
+    float: right;
+}
+
+#profilkep{
+    width: 130px;
+    height: 130px;
+}
+
+#warnings{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    min-width: 128px;
+}
