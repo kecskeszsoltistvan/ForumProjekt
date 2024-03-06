@@ -75,18 +75,21 @@ h1{
     margin-right: 10px;
 }
 
+h3{
+    font-size: 20px;
+}
 
 .kategoriak{
     background-color: #2E3150;
-    padding: 20px 20px 40px 20px;
+    padding: 20px 20px 20px 20px;
     border-radius: 20px;
     text-align: justify;
     margin: 10px 10px 10px 10px;
     color: white;
     font-size: 18px;
     flex-direction: column;
-    max-width: 900px;
-    min-width: 475px;
+    max-width: 1000px;
+    min-width: 345px;
 }
 
 .datum{
