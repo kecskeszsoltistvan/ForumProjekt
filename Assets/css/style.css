@@ -124,3 +124,42 @@ hr{
 h4{
     text-decoration: underline;
 }
+
+.content{
+    background-color: #2E3150;
+    padding: 20px 20px 40px 20px;
+    border-radius: 20px;
+    text-align: justify;
+    margin: 10px auto;
+    color: white;
+    font-size: 18px;
+    max-width: 1000px;
+    width: 80vw ;
+    min-width: 300px;
+}
+
+hr{
+    border-top: 5px #434669  solid;
+    opacity: 100%;
+}
+
+.jelzes{
+    height: 36px;
+    width: 36px;
+    margin-right: 10px;
+}
+
+.close{
+    height: 24px;
+    width: 24px;
+    float: right;
+}
+
+#postas:last-child{
+    margin-bottom: 20px;
+}
+
+.datum{
+    color: #676F9E;
+    float: right;
+}
