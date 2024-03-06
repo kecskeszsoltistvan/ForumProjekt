@@ -4,6 +4,7 @@ body{
 
 .navbar{
     background-color: #2E3150 !important;
+    border-bottom: 3px solid #434669;
 }
 
 .navbar a{
@@ -16,6 +17,18 @@ body{
     width: 64px;
 }
 
+.navbar-toggler, .navbar-toggler-icon{
+    border-color: #F9B079;
+    border: 2px solid #F9B079;
+    background-color: #F9B079;
+    color: #F9B079;
+    
+}
+/*
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+*/
 .png-mid{
     width: 48px;
     height: 48px;
@@ -40,6 +53,76 @@ body{
     margin-right: auto;
     margin-left: auto;
 }
+.footer_btn:hover{
+    background-color: #F9B079;
+}
+h1{
+    text-align: center;
+    padding: 100px 20px 20px 20px;
+    color: white;
+    font-weight: 600;
+    margin-top: 90px;
+}
+
+.rolunkcard{
+    display: flex;
+    background-color: #2E3150;
+    color: white;
+    border-radius: 20px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-width: 70%;
+    min-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    align-items: stretch;
+}
+
+.rolunkkepek{
+    width: 166px;
+    height: 166px;
+    margin: 30px 10px 30px 30px;
+}
+.adatok{
+    flex-grow: 2;
+    padding: 25px 30px 25px 20px;
+}
+hr{
+    height: 5px;
+    border-top: 5px solid #434669;
+    opacity: 100%;
+}
+#rolunkkartyak:last-child{
+    margin-bottom: 70px;
+}
+.szellős{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+    justify-content: space-evenly;
+    min-height: 800px;
+    margin: 20px;
+    gap: 20px;
+}
+#szab_kep{
+    margin-right: 55px;
+    align-self: center;
+}
+.rolunkkepek_kis{
+    width: 100px;
+    height: 100px;
+    margin: 30px;
+}
+.important{
+    color: #fa7b77;
+    margin-bottom: 80px;
+}
+h4{
+    text-decoration: underline;
+}
 
 .content{
     background-color: #2E3150;
@@ -57,12 +140,6 @@ body{
 hr{
     border-top: 5px #434669  solid;
     opacity: 100%;
-}
-
-h1{
-    color: white;
-    text-align: center;
-    padding: 10px 10px 5px 10px;
 }
 
 .jelzes{
