@@ -33,6 +33,7 @@ body{
     width: 48px;
     height: 48px;
 }
+
 .btn{
     color: #fff !important;
     font-weight: bold;
@@ -46,8 +47,8 @@ body{
     left: 0;
     bottom: 0;
     width: 100%;
+    border-top: 3px solid #434669;
 }
-
 .footer_btn{
     width: 200px;
     margin-right: auto;

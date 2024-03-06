@@ -5,3 +5,9 @@ app.run(function($rootScope){
 
 
 })
+
+
+document.getElementById("rolunkBTN").onclick = function () {
+    location.href = "Views/rolunk.html";
+};
+
