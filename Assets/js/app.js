@@ -1,12 +1,10 @@
 var app = angular.module("forumApp", ["ngRoute", "ui.bootstrap", "ngNotify"])
 
-$rootScope.suerverUrl = "http://localhost:3000"
+//$rootScope.suerverUrl = "http://localhost:3000"
 
 
 app.run(function($rootScope){
     $rootScope.title = "Fórum"
-
-
 })
 
 app.config(function($routeProvider){
@@ -62,11 +60,9 @@ app.controller("loginUserCtrl",  function($scope,ngNotify){
                     password: CryptoJS.SHA1($scope.user.password).toString()
                 }
                 
-                
                 axios.get($rootScope.serverUrl + "/users", data).then(res => {
                     alert(res.data[0].msg);
-                })
-                
+                })                
             }
         }
     }

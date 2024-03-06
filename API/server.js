@@ -1,6 +1,7 @@
 require("dotenv").config()
-var mysql = require('mysql');
+var mysql = require('mysql')
 const express = require('express')
+const cors = require('cors')
 const app = express()
 const port = process.env.PORT
 
@@ -27,8 +28,8 @@ app.get('/', function (req, res) {
 // Employees table
 // ------------------------------
 
-// GET all employees
-app.get("/users", (req, res)=>{
+// GET users
+app.get("/users", cors(), (req, res)=>{
     pool.query('SELECT * FROM users', (error, results)=>{
         if (error) throw res.send(error);
         
@@ -36,10 +37,10 @@ app.get("/users", (req, res)=>{
     });
 })
 
-// GET one employee by PK
+// GET one employee by email
 app.get("/users/:pk", (req, res)=>{
     let pk = req.params.pk
-    pool.query(`SELECT * FROM users WHERE ID=?`, pk, (error, results)=>{
+    pool.query(`SELECT * FROM users WHERE email=?`, pk, (error, results)=>{
         if (error) throw res.send(error);
         
         res.send(results)
@@ -50,7 +51,7 @@ app.get("/users/:pk", (req, res)=>{
 // POST new user
 app.post("/users", (req, res)=>{
     let data  = req.body
-    pool.query(`INSERT INTO users VALUES(null, "${data.name}", "${data.email}", ${data.password})`, (error, results)=>{
+    pool.query(`INSERT INTO users (id, name, email, password) VALUES(NULL, "${data.name}", "${data.email}", ${data.password})`, (error, results)=>{
         if (error) throw res.status(500).send(error);
         
         res.status(200).send(results)
