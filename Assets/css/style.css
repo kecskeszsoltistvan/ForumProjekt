@@ -126,7 +126,6 @@ h4{
 }
 
 .content{
-    background-color: #2E3150;
     padding: 20px 20px 40px 20px;
     border-radius: 20px;
     text-align: justify;
@@ -134,12 +133,15 @@ h4{
     color: white;
     font-size: 18px;
     max-width: 1000px;
-    width: 80vw ;
     min-width: 300px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    flex-direction: column;
 }
 
 hr{
-    border-top: 5px #434669  solid;
+    border-top: 5px #434669 solid;
     opacity: 100%;
 }
 
@@ -149,17 +151,58 @@ hr{
     margin-right: 10px;
 }
 
-.close{
-    height: 24px;
-    width: 24px;
-    float: right;
+h3{
+    font-size: 20px;
 }
 
-#postas:last-child{
-    margin-bottom: 20px;
+.kategoriak{
+    background-color: #2E3150;
+    padding: 20px 20px 20px 20px;
+    border-radius: 20px;
+    text-align: justify;
+    margin: 10px 10px 10px 10px;
+    color: white;
+    font-size: 18px;
+    flex-direction: column;
+    max-width: 1000px;
+    min-width: 345px;
 }
 
 .datum{
     color: #676F9E;
     float: right;
+}
+
+.cim{
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 10px 10px 10px 10px;
+}
+
+.kedvenc{
+    height: 33px;
+    width: auto;
+    margin-top: 10px;
+}
+
+.header{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.user{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+.name{
+    margin: 15px 10px 10px 10px;
+}
+
+.profil{
+    height: 51px;
+    width: auto;
 }
