@@ -1,5 +1,9 @@
 body{
     background-color: #434669;
+    background-image: url(../img/main_bg.svg);
+    background-repeat: repeat;
+    background-size: 100%;
+    background-position: center;
 }
 
 .navbar{
@@ -314,11 +318,6 @@ p{
     text-align: justify;
 }
 
-body{
-    background-image: url(../img/main_bg.svg);
-    background-repeat: repeat-y;
-    background-size: fill;
-}
 .login-title{
     color: black;
     margin: 0px;
