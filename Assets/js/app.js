@@ -23,7 +23,9 @@ app.config(function($routeProvider){
     .when("/legutobbi", {
         templateUrl: "Views/legutobbi.html",
     })
-    
+    .when("/szabalyzat", {
+        templateUrl: "Views/szabalyzat.html",
+    })
     .otherwise(
         {redirecTo: "/login"}
     )
