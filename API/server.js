@@ -37,21 +37,20 @@ app.get("/users", cors(), (req, res)=>{
     });
 })
 
-// GET one employee by email
-app.get("/users/:pk", (req, res)=>{
+// GET one user by pk, email
+app.get("/users/:pk", cors(), (req, res)=>{
     let pk = req.params.pk
-    pool.query(`SELECT * FROM users WHERE email=?`, pk, (error, results)=>{
+    pool.query(`SELECT * FROM users WHERE id=?`, pk, (error, results)=>{
         if (error) throw res.send(error);
         
         res.send(results)
     });
 })
 
-
 // POST new user
-app.post("/users", (req, res)=>{
+app.post("/users", cors(), (req, res)=>{
     let data  = req.body
-    pool.query(`INSERT INTO users (id, name, email, password) VALUES(NULL, "${data.name}", "${data.email}", ${data.password})`, (error, results)=>{
+    pool.query(`INSERT INTO users (id, name, email, password) VALUES(NULL, "${data.name}", "${data.email}", "${data.password}")`, (error, results)=>{
         if (error) throw res.status(500).send(error);
         
         res.status(200).send(results)
@@ -59,11 +58,11 @@ app.post("/users", (req, res)=>{
 
 })
 
-// PATCH one employee by PK
-app.patch("/employees/:pk", (req, res)=>{
+// PATCH one user by PK
+app.patch("/users/:pk", cors(), (req, res)=>{
     let pk = req.params.pk
     let data  = req.body
-    pool.query(`UPDATE employees SET name="${data.name}", address="${data.address}", phone="${data.phone}", email="${data.email}", post="${data.post}", price=${data.price} WHERE ID=?`, pk, (error, results)=>{
+    pool.query(`UPDATE users SET name="${data.name}", email="${data.email}", password="${data.password}" WHERE ID=?`, pk, (error, results)=>{
         if (error) throw res.status(500).send(error)
         res.status(200).send(results)
     });
@@ -71,9 +70,9 @@ app.patch("/employees/:pk", (req, res)=>{
 })
 
 // DELETE one employee by PK
-app.delete("/employees/:pk", (req, res)=>{
+app.delete("/users/:pk", cors(), (req, res)=>{
     let pk = req.params.pk
-    pool.query(`DELETE FROM employees WHERE ID=?`, pk, (error, results)=>{
+    pool.query(`DELETE FROM users WHERE ID=?`, pk, (error, results)=>{
         if (error) throw res.send(error);
         
         res.send(results)
