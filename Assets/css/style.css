@@ -54,17 +54,21 @@ body{
     width: 100%;
     border-top: 3px solid #434669;
 }
+
 .footer_btn{
     width: 200px;
     margin-right: auto;
     margin-left: auto;
 }
+
 .footer_btn:hover{
     background-color: #F9B079;
 }
+
 main{
     padding-top: 90px;
 }
+
 h1{
     text-align: center;
     padding: 30px 20px 20px 20px;
@@ -95,10 +99,12 @@ h1{
     height: 166px;
     margin: 30px 10px 30px 30px;
 }
+
 .adatok{
     flex-grow: 2;
     padding: 25px 30px 25px 20px;
 }
+
 hr{
     height: 5px;
     border-top: 5px solid #434669;
@@ -114,19 +120,23 @@ hr{
     margin: 20px;
     gap: 20px;
 }
+
 #szab_kep{
     margin-right: 55px;
     align-self: center;
 }
+
 .rolunkkepek_kis{
     width: 100px;
     height: 100px;
     margin: 30px;
 }
+
 .important{
     color: #fa7b77;
     margin-bottom: 20px;
 }
+
 h4{
     text-decoration: underline;
 }
@@ -178,6 +188,7 @@ h3{
 #rolunkkartyak:last-child{
     margin-bottom: 90px;
 }
+
 .datum{
     color: #676F9E;
     float: right;
@@ -293,7 +304,18 @@ h3{
         text-align: center; 
     }
 }
+
 h2{
     
     margin-bottom: 0px;
+}
+
+p{
+    text-align: justify;
+}
+
+body{
+    background-image: url(../img/main_bg.svg);
+    background-repeat: repeat-y;
+    background-size: fill;
 }

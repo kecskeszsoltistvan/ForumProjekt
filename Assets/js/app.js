@@ -3,11 +3,15 @@ var app = angular.module("forumApp", ["ngRoute", "ui.bootstrap", "ngNotify"])
 app.run(function($rootScope){
     $rootScope.title = "Fórum"
     $rootScope.suerverUrl = "http://localhost:3000"
+    
 })
 
 app.config(function($routeProvider){
     $routeProvider
-    
+
+    .when("/",{
+        templateUrl: "Views/main.html"
+    })
     .when("/rolunk", {
         templateUrl: "Views/rolunk.html",
     })
@@ -24,7 +28,7 @@ app.config(function($routeProvider){
         templateUrl: "Views/main.html",
     })
     .otherwise(
-        {redirecTo: "/login"}
+        {redirecTo: "/main"}
     )
 })
 
