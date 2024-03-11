@@ -319,3 +319,8 @@ body{
     background-repeat: repeat-y;
     background-size: fill;
 }
+.login-title{
+    color: black;
+    margin: 0px;
+    padding: 0px;
+}
