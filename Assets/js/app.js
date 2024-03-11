@@ -1,7 +1,5 @@
 var app = angular.module("forumApp", ["ngRoute", "ui.bootstrap", "ngNotify"])
 
-
-
 app.run(function($rootScope){
     $rootScope.title = "Fórum"
     $rootScope.suerverUrl = "http://localhost:3000"
@@ -9,11 +7,22 @@ app.run(function($rootScope){
 
 app.config(function($routeProvider){
     $routeProvider
-    /*
-    .when("/login", {
-        templateUrl: "Views/login.html",
+    
+    .when("/rolunk", {
+        templateUrl: "Views/rolunk.html",
     })
-    */
+    .when("/gyak", {
+        templateUrl: "Views/GYAK.html",
+    })
+    .when("/legutobbi", {
+        templateUrl: "Views/legutobbi.html",
+    })
+    .when("/szabalyzat", {
+        templateUrl: "Views/szabalyzat.html",
+    })
+    .when("/main", {
+        templateUrl: "Views/main.html",
+    })
     .otherwise(
         {redirecTo: "/login"}
     )
@@ -67,3 +76,9 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
         }
     }
 })
+
+/*
+document.getElementById("rolunkBTN").onclick = function () {
+    location.href = "Views/rolunk.html";
+};
+*/

@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container-fluid position-relative">
             <div>
-                <img class="nav_img navbar-brand" href="#" src="icons/crowd-of-users.png" alt="">
+                <a href="#!/main"><img class="nav_img navbar-brand" href="#" src="icons/crowd-of-users.png" alt=""></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
                     <span class="navbar-toggler-icon">
                         <i class="fas fa-bars"></i>
@@ -33,9 +33,6 @@
             </div>
         </div>
     </nav>
-
-
-    
       
     <!-- Reg Modal Form -->
     <div class="modal fade" id="Reg_modal" tabindex="-1" ng-controller="regUserCtrl" >
@@ -113,24 +110,20 @@
         </div>
     </div>
 
-
     <main ng-view>  
-
+      
     </main>
-
+  
     <footer class="footer">
         <div class="container-fluid m-2">
-            <div id="footer_elements" class="row d-flex flex-md-row justify-content-around">
-                <button type="button" class="btn mb-1 large-btn btn-space footer_btn">Szabályzat</button>
-                <button type="button" class="btn mb-1 large-btn btn-space footer_btn">GYAK</button>
-                <button type="button" class="btn mb-1 large-btn btn-space footer_btn">Legutóbbi frissítés</button>
-                <button type="button" class="btn mb-1 large-btn btn-space footer_btn">Rólunk</button>
+            <div id="footer_elements" class="d-flex flex-row justify-content-around flex-wrap">
+                <a href="#!/szabalyzat" class="footer_a_btn"><button type="button" class="btn mb-1 large-btn btn-space footer_btn">Szabályzat</button></a>
+                <a href="#!/gyak" class="footer_a_btn"><button type="button" class="btn mb-1 large-btn btn-space footer_btn">GYAK</button></a>
+                <a href="#!/legutobbi" class="footer_a_btn"><button type="button" class="btn mb-1 large-btn btn-space footer_btn">Legutóbbi frissítés</button></a>
+                <a href="#!/rolunk" class="footer_a_btn"><button type="button" class="btn mb-1 large-btn btn-space footer_btn">Rólunk</button></a>
             </div>
         </div>
     </footer>
-
-    
-
 
     <script src="Assets/js/bootstrap.min.js"></script>
     <script src="Assets/js/angular.min.js"></script>
