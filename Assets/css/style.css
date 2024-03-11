@@ -136,6 +136,8 @@ h4{
     flex-wrap: nowrap;
     justify-content: space-evenly;
     flex-direction: column;
+    background-color: #2E3150;
+
 }
 
 hr{
@@ -282,4 +284,8 @@ h3{
         padding: 0 30px; 
         text-align: center; 
     }
+}
+h2{
+    
+    margin-bottom: 0px;
 }

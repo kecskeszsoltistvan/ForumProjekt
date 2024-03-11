@@ -26,6 +26,9 @@ app.config(function($routeProvider){
     .when("/szabalyzat", {
         templateUrl: "Views/szabalyzat.html",
     })
+    .when("/main", {
+        templateUrl: "Views/main.html",
+    })
     .otherwise(
         {redirecTo: "/login"}
     )
