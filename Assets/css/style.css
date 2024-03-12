@@ -99,10 +99,15 @@ h1{
 }
 
 .rolunkkepek{
-    width: 166px;
-    height: 166px;
-    margin: 30px 10px 30px 30px;
+    width: 180px;
+    height: 180px;
+    margin: 80px 10px 50px 30px;
+    
+   
 }
+.rolunkkepek:hover {
+    box-shadow: 12px 12px 10px 1px #676F9E;
+  }
 
 .adatok{
     flex-grow: 2;
@@ -294,13 +299,13 @@ h3{
     .rolunkcard {
         flex-direction: column; 
         align-items: center; 
-        max-width: 100%; 
+        max-width: 90%; 
         margin-left: auto;
         margin-right: auto;
     }
 
     .rolunkkepek {
-        margin-bottom: 20px;
+        margin-bottom: 70px;
     }
 
     .adatok {
