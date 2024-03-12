@@ -263,3 +263,13 @@ h3{
     min-width: 128px;
 }
 
+.kiskep{
+    height: 51px;
+    width: 51px;
+}
+.soros{
+    display: flex;
+    flex: row nowrap;
+    align-content: center;
+    
+}
