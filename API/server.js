@@ -4,6 +4,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const port = process.env.PORT
+app.use(cors())
 
 var pool  = mysql.createPool({
     connectionLimit : 10,
@@ -58,6 +59,17 @@ app.post("/users", cors(), (req, res)=>{
 
 })
 
+// login
+app.get("/login", cors(), (req, res)=>{
+    let data  = req.body
+    pool.query(`SELECT * FROM users WHERE email = "${data.email}" AND password = "${data.password}"`, (error, results)=>{
+        if (error) throw res.status(500).send(error);
+        
+        res.status(200).send(results)
+    });
+
+})
+
 // PATCH one user by PK
 app.patch("/users/:pk", cors(), (req, res)=>{
     let pk = req.params.pk
@@ -69,7 +81,7 @@ app.patch("/users/:pk", cors(), (req, res)=>{
 
 })
 
-// DELETE one employee by PK
+// DELETE one user by PK
 app.delete("/users/:pk", cors(), (req, res)=>{
     let pk = req.params.pk
     pool.query(`DELETE FROM users WHERE ID=?`, pk, (error, results)=>{

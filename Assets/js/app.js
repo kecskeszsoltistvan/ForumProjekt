@@ -44,7 +44,7 @@ app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
                     password: CryptoJS.SHA1($scope.user.password).toString()
                 }
                 console.log(data)
-                axios.post("http://localhost:3000/users", data).then(res => {
+                axios.post($rootScope.serverUrl + `/users/`, data).then(res => {
                     alert(res.data[0].msg);
                 })
                 
@@ -60,19 +60,19 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
         if($scope.user.email == null || $scope.user.password == null){
             ngNotify.set("Nem adtál meg minden adatot!", "error");
         }else{
-            if($scope.user.password != $scope.user.password){
-                ngNotify.set("Nem egyeznek meg a jelszavak!", "error")
-            }else{
-                let data = {
-                    email: $scope.user.email,
-                    password: CryptoJS.SHA1($scope.user.password).toString()
-                }
-                
-                axios.get($rootScope.serverUrl + `/users/${data.email}`, data).then(res => {
-                    //alert(res.data[0].msg);
-                    alert(siker)
-                })                
+            let data = {
+                email: $scope.user.email,
+                password: CryptoJS.SHA1($scope.user.password).toString()
             }
+            
+            axios.get(`${$rootScope.serverUrl}/login`, data).then(res => {
+                console.log(res.data)
+                if(res.data != []){
+                    alert("Siker")
+                }else{
+                    alert("Sikertelen")
+                }
+            })
         }
     }
 })
