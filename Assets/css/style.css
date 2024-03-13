@@ -126,6 +126,7 @@ h4{
 }
 
 .content{
+    background-color: #2E3150;
     padding: 20px 20px 40px 20px;
     border-radius: 20px;
     text-align: justify;
@@ -266,10 +267,25 @@ h3{
 .kiskep{
     height: 51px;
     width: 51px;
+    margin-right: 15px;
 }
 .soros{
     display: flex;
     flex: row nowrap;
     align-content: center;
-    
+    justify-content: space-between;
+}   
+
+.react h5{
+    color: #676F9E;
+}
+
+.react img{
+    height: 33px;
+    width: 33px;
+    margin: 0px 5px 0px 5px;
+}
+
+.hashtag p{
+    background-color: #676F9E;
 }
