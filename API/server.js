@@ -17,6 +17,7 @@ var pool  = mysql.createPool({
 // MIDDLEWARES
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
+app.use(cors())
 
 app.get('/', function (req, res) {
   res.send('Backend APi from Kisbarát to Neked')
@@ -91,7 +92,7 @@ app.delete("/users/:pk", cors(), (req, res)=>{
     });
 })
 
-
+/*
 // Worktimes table
 // ------------------------------
 // GET all worktimes
@@ -128,7 +129,7 @@ app.delete("/worktimes/:pk", (req, res)=>{
         res.send(results)
     });
 })
-
+*/
 app.listen(port, ()=>{
-    console.log(`Server listenng on port: ${port}`)
+    console.log(`A szerver hallgatózik a ${port} porton...`)
 })

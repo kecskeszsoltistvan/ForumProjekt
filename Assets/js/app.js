@@ -2,7 +2,7 @@ var app = angular.module("forumApp", ["ngRoute", "ui.bootstrap", "ngNotify"])
 
 app.run(function($rootScope){
     $rootScope.title = "Fórum"
-    $rootScope.suerverUrl = "http://localhost:3000"
+    $rootScope.serverUrl = "http://localhost:3000" // Itt volt egy elírás és emiatt nem ment ez egész szerver bejelentkezési rendeszere, de most meg van oldva.
 })
 
 app.config(function($routeProvider){
@@ -45,7 +45,7 @@ app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
                 }
                 console.log(data)
                 axios.post($rootScope.serverUrl + `/users/`, data).then(res => {
-                    alert(res.data[0].msg);
+                    alert(res.data[0].name);
                 })
                 
             }
@@ -68,7 +68,7 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
             axios.get(`${$rootScope.serverUrl}/login`, data).then(res => {
                 console.log(res.data)
                 if(res.data != []){
-                    alert("Siker")
+                    ngNotify.set(`Bejelentkezve, mint ${res.data}`, "success")
                 }else{
                     alert("Sikertelen")
                 }
