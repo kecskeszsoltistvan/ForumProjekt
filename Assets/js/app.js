@@ -3,7 +3,7 @@ var app = angular.module("forumApp", ["ngRoute", "ui.bootstrap", "ngNotify"])
 app.run(function($rootScope){
     $rootScope.title = "Fórum"
   
-    $rootScope.suerverUrl = "http://localhost:3000"
+    $rootScope.serverUrl = "http://localhost:3000"
    
 })
 
@@ -27,6 +27,9 @@ app.config(function($routeProvider){
     })
     .when("/main", {
         templateUrl: "Views/main.html",
+    })
+    .when("/postalada", {
+        templateUrl: "Views/postalada.html",
     })
     .otherwise(
         {redirecTo: "/main"}
