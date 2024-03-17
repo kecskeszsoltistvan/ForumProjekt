@@ -2,8 +2,9 @@ var app = angular.module("forumApp", ["ngRoute", "ui.bootstrap", "ngNotify"])
 
 app.run(function($rootScope){
     $rootScope.title = "Fórum"
+  
     $rootScope.suerverUrl = "http://localhost:3000"
-    
+   
 })
 
 app.config(function($routeProvider){
@@ -48,8 +49,8 @@ app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
                     password: CryptoJS.SHA1($scope.user.password).toString()
                 }
                 console.log(data)
-                axios.post("http://localhost:3000/users", data).then(res => {
-                    alert(res.data[0].msg);
+                axios.post($rootScope.serverUrl + `/users/`, data).then(res => {
+                    ngNotify.set("Sikeres regisztráció!", "success")
                 })
                 
             }
@@ -64,19 +65,28 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
         if($scope.user.email == null || $scope.user.password == null){
             ngNotify.set("Nem adtál meg minden adatot!", "error");
         }else{
-            if($scope.user.password != $scope.user.password){
-                ngNotify.set("Nem egyeznek meg a jelszavak!", "error")
-            }else{
-                let data = {
-                    email: $scope.user.email,
-                    password: CryptoJS.SHA1($scope.user.password).toString()
+            axios.get(`${$rootScope.serverUrl}/login/${$scope.user.email}`).then(res => {
+                console.log(res.data)
+                if(res.data.length != 0){
+                    console.log("Van ilyen felhasználó!")
+                    console.log(`${res.data[0].password}\n${CryptoJS.SHA1($scope.user.password).toString()}`)
+                    if (res.data[0].password == CryptoJS.SHA1($scope.user.password).toString()) {
+                        ngNotify.set(`Bejelentkezve, mint ${res.data[0].name}`, "success");
+                        if(document.querySelector("#marad-e").checked) {
+                            localStorage.setItem = {loggedUser : res.data[0]};
+                        }
+                        else{
+                            sessionStorage.setItem = {loggedUser : res.data[0]};
+                        }
+                    }
+                    else {
+                        ngNotify.set(`Helytelen jelszó!`, "error");
+                    }
                 }
-                
-                axios.get($rootScope.serverUrl + `/users/${data.email}`, data).then(res => {
-                    //alert(res.data[0].msg);
-                    alert(siker)
-                })                
-            }
+                else{
+                    ngNotify.set(`Ez az e-mail nincs regisztrálva!`, "error");
+                }
+            })
         }
     }
 })

@@ -4,6 +4,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const port = process.env.PORT
+app.use(cors())
 
 var pool  = mysql.createPool({
     connectionLimit : 10,
@@ -16,6 +17,7 @@ var pool  = mysql.createPool({
 // MIDDLEWARES
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
+app.use(cors())
 
 app.get('/', function (req, res) {
   res.send('Backend APi from Kisbarát to Neked')
@@ -32,12 +34,11 @@ app.get('/', function (req, res) {
 app.get("/users", cors(), (req, res)=>{
     pool.query('SELECT * FROM users', (error, results)=>{
         if (error) throw res.send(error);
-        
         res.send(results)
     });
 })
 
-// GET one user by pk, email
+// GET one user by pk
 app.get("/users/:pk", cors(), (req, res)=>{
     let pk = req.params.pk
     pool.query(`SELECT * FROM users WHERE id=?`, pk, (error, results)=>{
@@ -52,7 +53,16 @@ app.post("/users", cors(), (req, res)=>{
     let data  = req.body
     pool.query(`INSERT INTO users (id, name, email, password) VALUES(NULL, "${data.name}", "${data.email}", "${data.password}")`, (error, results)=>{
         if (error) throw res.status(500).send(error);
-        
+        res.status(200).send(results)
+    });
+
+})
+
+// login
+app.get("/login/:email", cors(), (req, res)=>{
+    let data  = req.params.email
+    pool.query(`SELECT * FROM users WHERE email = "${data}"`, (error, results)=>{
+        if (error) throw res.status(500).send(error);
         res.status(200).send(results)
     });
 
@@ -69,7 +79,7 @@ app.patch("/users/:pk", cors(), (req, res)=>{
 
 })
 
-// DELETE one employee by PK
+// DELETE one user by PK
 app.delete("/users/:pk", cors(), (req, res)=>{
     let pk = req.params.pk
     pool.query(`DELETE FROM users WHERE ID=?`, pk, (error, results)=>{
@@ -79,7 +89,7 @@ app.delete("/users/:pk", cors(), (req, res)=>{
     });
 })
 
-
+/*
 // Worktimes table
 // ------------------------------
 // GET all worktimes
@@ -116,7 +126,7 @@ app.delete("/worktimes/:pk", (req, res)=>{
         res.send(results)
     });
 })
-
+*/
 app.listen(port, ()=>{
-    console.log(`Server listenng on port: ${port}`)
+    console.log(`A szerver hallgatózik a ${port} porton...`)
 })
