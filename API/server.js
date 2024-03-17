@@ -34,12 +34,11 @@ app.get('/', function (req, res) {
 app.get("/users", cors(), (req, res)=>{
     pool.query('SELECT * FROM users', (error, results)=>{
         if (error) throw res.send(error);
-        
         res.send(results)
     });
 })
 
-// GET one user by pk, email
+// GET one user by pk
 app.get("/users/:pk", cors(), (req, res)=>{
     let pk = req.params.pk
     pool.query(`SELECT * FROM users WHERE id=?`, pk, (error, results)=>{
@@ -54,18 +53,16 @@ app.post("/users", cors(), (req, res)=>{
     let data  = req.body
     pool.query(`INSERT INTO users (id, name, email, password) VALUES(NULL, "${data.name}", "${data.email}", "${data.password}")`, (error, results)=>{
         if (error) throw res.status(500).send(error);
-        
         res.status(200).send(results)
     });
 
 })
 
 // login
-app.get("/login", cors(), (req, res)=>{
-    let data  = req.body
-    pool.query(`SELECT * FROM users WHERE email = "${data.email}" AND password = "${data.password}"`, (error, results)=>{
+app.get("/login/:email", cors(), (req, res)=>{
+    let data  = req.params.email
+    pool.query(`SELECT * FROM users WHERE email = "${data}"`, (error, results)=>{
         if (error) throw res.status(500).send(error);
-        
         res.status(200).send(results)
     });
 

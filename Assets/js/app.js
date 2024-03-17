@@ -45,7 +45,7 @@ app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
                 }
                 console.log(data)
                 axios.post($rootScope.serverUrl + `/users/`, data).then(res => {
-                    alert(res.data[0].name);
+                    ngNotify.set("Sikeres regisztráció!", "success")
                 })
                 
             }
@@ -60,17 +60,26 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
         if($scope.user.email == null || $scope.user.password == null){
             ngNotify.set("Nem adtál meg minden adatot!", "error");
         }else{
-            let data = {
-                email: $scope.user.email,
-                password: CryptoJS.SHA1($scope.user.password).toString()
-            }
-            
-            axios.get(`${$rootScope.serverUrl}/login`, data).then(res => {
+            axios.get(`${$rootScope.serverUrl}/login/${$scope.user.email}`).then(res => {
                 console.log(res.data)
-                if(res.data != []){
-                    ngNotify.set(`Bejelentkezve, mint ${res.data}`, "success")
-                }else{
-                    alert("Sikertelen")
+                if(res.data.length != 0){
+                    console.log("Van ilyen felhasználó!")
+                    console.log(`${res.data[0].password}\n${CryptoJS.SHA1($scope.user.password).toString()}`)
+                    if (res.data[0].password == CryptoJS.SHA1($scope.user.password).toString()) {
+                        ngNotify.set(`Bejelentkezve, mint ${res.data[0].name}`, "success");
+                        if(document.querySelector("#marad-e").checked) {
+                            localStorage.setItem = {loggedUser : res.data[0]};
+                        }
+                        else{
+                            sessionStorage.setItem = {loggedUser : res.data[0]};
+                        }
+                    }
+                    else {
+                        ngNotify.set(`Helytelen jelszó!`, "error");
+                    }
+                }
+                else{
+                    ngNotify.set(`Ez az e-mail nincs regisztrálva!`, "error");
                 }
             })
         }
