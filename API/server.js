@@ -52,6 +52,7 @@ app.get("/users/:pk", cors(), (req, res)=>{
 app.post("/users", cors(), (req, res)=>{
     let data  = req.body
     pool.query(`INSERT INTO users (id, name, email, password) VALUES(NULL, "${data.name}", "${data.email}", "${data.password}")`, (error, results)=>{
+    console.log(`Új felhasználó regisztrált... (${data.name})`)
         if (error) throw res.status(500).send(error);
         res.status(200).send(results)
     });

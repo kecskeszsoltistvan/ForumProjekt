@@ -30,6 +30,7 @@ app.config(function($routeProvider){
     })
     .when("/postalada", {
         templateUrl: "Views/postalada.html",
+        // Csak ha a felhasználó be van jelentkezve
     })
     .otherwise(
         {redirecTo: "/main"}
@@ -77,9 +78,11 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
                         ngNotify.set(`Bejelentkezve, mint ${res.data[0].name}`, "success");
                         if(document.querySelector("#marad-e").checked) {
                             localStorage.setItem = {loggedUser : res.data[0]};
+                            location.reload();
                         }
                         else{
                             sessionStorage.setItem = {loggedUser : res.data[0]};
+                            location.reload();
                         }
                     }
                     else {
