@@ -31,10 +31,15 @@ app.config(function($routeProvider){
     .when("/postalada", {
         templateUrl: "Views/postalada.html",
     })
+    .when("/profil", {
+        templateUrl: "Views/profil.html",
+    })
     .otherwise(
         {redirecTo: "/main"}
     )
 })
+
+
 
 app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
     $scope.user = {}
@@ -93,6 +98,10 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
         }
     }
 })
+
+app.user = function(){
+    
+}
 
 /*
 document.getElementById("rolunkBTN").onclick = function () {
