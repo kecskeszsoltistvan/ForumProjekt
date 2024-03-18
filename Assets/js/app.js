@@ -1,5 +1,4 @@
 var app = angular.module("forumApp", ["ngRoute", "ui.bootstrap", "ngNotify"])
-
 app.run(function($rootScope){
     $rootScope.title = "Fórum"
   
@@ -70,19 +69,19 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
             ngNotify.set("Nem adtál meg minden adatot!", "error");
         }else{
             axios.get(`${$rootScope.serverUrl}/login/${$scope.user.email}`).then(res => {
-                console.log(res.data)
                 if(res.data.length != 0){
                     console.log("Van ilyen felhasználó!")
-                    console.log(`${res.data[0].password}\n${CryptoJS.SHA1($scope.user.password).toString()}`)
                     if (res.data[0].password == CryptoJS.SHA1($scope.user.password).toString()) {
                         ngNotify.set(`Bejelentkezve, mint ${res.data[0].name}`, "success");
                         if(document.querySelector("#marad-e").checked) {
-                            localStorage.setItem = {loggedUser : res.data[0]};
-                            location.reload();
+                            localStorage.setItem('loggedUser', JSON.stringify(res.data[0]));
+                            console.log(localStorage.getItem(loggedUser));
+                            console.log(sessionStorage.getItem(loggedUser));
                         }
                         else{
                             sessionStorage.setItem = {loggedUser : res.data[0]};
-                            location.reload();
+                            console.log(localStorage.getItem(loggedUser));
+                            console.log(sessionStorage.getItem(loggedUser));
                         }
                     }
                     else {
