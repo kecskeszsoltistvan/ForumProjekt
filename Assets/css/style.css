@@ -101,4 +101,30 @@ hr{
 }
 h4{
     text-decoration: underline;
+    user-select: none;
 }
+ul {
+    display: none;
+    background-color: #434669;
+    border-radius: 15px;
+  }
+
+.clickable-h4:hover{
+    cursor: pointer;
+}
+.clickable-h4{
+    display: flex;
+    min-width: 10.25rem;
+    max-width: 10.25rem;
+    justify-content: space-between;
+}
+
+.dropdown{
+    height: 30px;
+    width: 30px;
+    transition: transform 0.3s;
+}
+.flipped{
+    transform: rotateZ(180deg);
+}
+
