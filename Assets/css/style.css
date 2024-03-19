@@ -1,5 +1,9 @@
 body{
     background-color: #434669;
+    background-image: url(../img/main_bg.svg);
+    background-repeat: repeat;
+    background-size: 100%;
+    background-position: center;
 }
 
 .navbar{
@@ -41,6 +45,11 @@ body{
     border-radius: 10px;
     background-color: #676F9E;
 }
+
+.btn:hover{
+    background-color: #F9B079;
+}
+
 .footer{
     background-color: #2E3150;
     position: fixed;
@@ -49,20 +58,27 @@ body{
     width: 100%;
     border-top: 3px solid #434669;
 }
+
 .footer_btn{
     width: 200px;
     margin-right: auto;
     margin-left: auto;
 }
+
 .footer_btn:hover{
     background-color: #F9B079;
 }
+
+main{
+    padding-top: 90px;
+}
+
 h1{
     text-align: center;
     padding: 50px 20px 20px;
     color: white;
     font-weight: 600;
-    margin-top: 90px;
+    margin-top: 0px;
 }
 
 .rolunkcard{
@@ -83,22 +99,27 @@ h1{
 }
 
 .rolunkkepek{
-    width: 166px;
-    height: 166px;
-    margin: 30px 10px 30px 30px;
+    width: 180px;
+    height: 180px;
+    margin: 80px 10px 50px 30px;
+    
+   
 }
+.rolunkkepek:hover {
+    box-shadow: 12px 12px 10px 1px #676F9E;
+  }
+
 .adatok{
     flex-grow: 2;
     padding: 25px 30px 25px 20px;
 }
+
 hr{
     height: 5px;
     border-top: 5px solid #434669;
     opacity: 100%;
 }
-#rolunkkartyak:last-child{
-    margin-bottom: 70px;
-}
+
 .szellős{
     display: flex;
     flex-direction: column;
@@ -108,25 +129,33 @@ hr{
     margin: 20px;
     gap: 20px;
 }
+
 #szab_kep{
     margin-right: 55px;
     align-self: center;
 }
+
 .rolunkkepek_kis{
     width: 100px;
     height: 100px;
     margin: 30px;
 }
+
 .important{
     color: #fa7b77;
-    margin-bottom: 80px;
+    margin-bottom: 20px;
 }
+
 h4{
     text-decoration: underline;
 }
 
+h5{
+    font-size: 20px;
+}
+
 .content{
-    padding: 20px 20px 40px 20px;
+    padding: 20px 20px 10px 20px;
     border-radius: 20px;
     text-align: justify;
     margin: 10px auto;
@@ -134,11 +163,19 @@ h4{
     font-size: 18px;
     width: 70vw;
     max-width: 1000px;
-    min-width: 300px;
+    min-width: 360px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
     flex-direction: column;
+    background-color: #2E3150;
+
+}
+
+.close{
+    height: 24px;
+    width: 24px;
+    float: right;
 }
 
 hr{
@@ -167,6 +204,9 @@ h3{
     flex-direction: column;
     max-width: 1000px;
     min-width: 345px;
+}
+#rolunkkartyak:last-child{
+    margin-bottom: 90px;
 }
 
 .datum{
@@ -322,54 +362,40 @@ h3{
     font-size: larger;
     padding: 10px 0px 10px;
 }
+@media only screen and (max-width: 646px) {
+    #rolunkkartyak:last-child{
+        margin-bottom: 120px;
+    }
+    .rolunkcard {
+        flex-direction: column; 
+        align-items: center; 
+        max-width: 90%; 
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-.kiskep{
-    height: 51px;
-    width: 51px;
-    margin-right: 15px;
-}
-.soros{
-    display: flex;
-    flex: row nowrap;
-    align-content: center;
-    justify-content: space-between;
-}   
+    .rolunkkepek {
+        margin-bottom: 70px;
+    }
 
-.react h5{
-    color: #676F9E;
-}
-
-.react img{
-    height: 33px;
-    width: 33px;
-    margin: 0px 5px 0px 5px;
-}
-
-.hashtag p{
-    background-color: #676F9E;
+    .adatok {
+        padding: 0 30px; 
+        text-align: center; 
+    }
 }
 
-.kategoria-interface{
-    flex-grow: 2;
-    align-self: flex-start;
-    padding: 40px;
-    max-width: 400px;
-    min-width: 300px;
+h2{
+    margin-bottom: 0px;
 }
-.kategoria-rendezes{
-    margin: 10px 4vw 10px;
-    gap: 20px;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-evenly;
+
+p{
+    text-align: justify;
 }
-.kategoriak{
-    flex-grow: 5;
-    display: flex;
-    flex-direction: column;
-}
-.kategoriak:last-child{
-    margin-bottom: 70px;
+
+.login-title{
+    color: black;
+    margin: 0px;
+    padding: 0px;
 }
 
 .kategoria-interface{
