@@ -59,7 +59,7 @@ body{
 }
 h1{
     text-align: center;
-    padding: 100px 20px 20px 20px;
+    padding: 50px 20px 20px;
     color: white;
     font-weight: 600;
     margin-top: 90px;
@@ -126,13 +126,13 @@ h4{
 }
 
 .content{
-    background-color: #2E3150;
     padding: 20px 20px 40px 20px;
     border-radius: 20px;
     text-align: justify;
     margin: 10px auto;
     color: white;
     font-size: 18px;
+    width: 70vw;
     max-width: 1000px;
     min-width: 300px;
     display: flex;
@@ -156,7 +156,7 @@ h3{
     font-size: 20px;
 }
 
-.kategoriak{
+.kategoria{
     background-color: #2E3150;
     padding: 20px 20px 20px 20px;
     border-radius: 20px;
@@ -274,6 +274,65 @@ h3{
     flex: row nowrap;
     align-content: center;
     justify-content: space-between;
+} 
+.oszlopos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}  
+.alcím{
+    color: #676F9E;
+    margin: 0px;
+}
+.react{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    color: #676F9E;
+    font-weight: bolder;
+}
+.react h5{
+    color: #676F9E;
+}
+
+.react img{
+    height: 33px;
+    width: 33px;
+    margin: 0px 5px 0px 5px;
+}
+.hashtag{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 50px;
+}
+.hashtag p{
+    font-weight: bold;
+    background-color: #434669;
+    border-radius: 20px;
+    padding: 5px 10px 5px;
+    margin: 0px;
+}
+#post-button{
+    background-color:#676F9E;
+    border-radius: 15px;
+    text-align: center;
+    font-size: larger;
+    padding: 10px 0px 10px;
+}
+
+.kiskep{
+    height: 51px;
+    width: 51px;
+    margin-right: 15px;
+}
+.soros{
+    display: flex;
+    flex: row nowrap;
+    align-content: center;
+    justify-content: space-between;
 }   
 
 .react h5{
@@ -288,4 +347,50 @@ h3{
 
 .hashtag p{
     background-color: #676F9E;
+}
+
+.kategoria-interface{
+    flex-grow: 2;
+    align-self: flex-start;
+    padding: 40px;
+    max-width: 400px;
+    min-width: 300px;
+}
+.kategoria-rendezes{
+    margin: 10px 4vw 10px;
+    gap: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+.kategoriak{
+    flex-grow: 5;
+    display: flex;
+    flex-direction: column;
+}
+.kategoriak:last-child{
+    margin-bottom: 70px;
+}
+
+.kategoria-interface{
+    flex-grow: 2;
+    align-self: flex-start;
+    padding: 40px;
+    max-width: 400px;
+    min-width: 300px;
+}
+.kategoria-rendezes{
+    margin: 10px 4vw 10px;
+    gap: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+.kategoriak{
+    flex-grow: 5;
+    display: flex;
+    flex-direction: column;
+}
+.kategoriak:last-child{
+    margin-bottom: 70px;
 }
