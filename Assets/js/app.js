@@ -1,11 +1,16 @@
 var app = angular.module("forumApp", ["ngRoute", "ui.bootstrap", "ngNotify"])
+
+// Teszteléshez a törlések
+console.log(sessionStorage.getItem('loggedUser'));
+localStorage.clear();
+sessionStorage.clear();
+
 app.run(function($rootScope){
     $rootScope.title = "Fórum"
   
     $rootScope.serverUrl = "http://localhost:3000"
    
 })
-
 app.config(function($routeProvider){
     $routeProvider
 
@@ -36,6 +41,7 @@ app.config(function($routeProvider){
     )
 })
 
+
 app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
     $scope.user = {}
 
@@ -60,7 +66,6 @@ app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
         }
     }
 })
-
 app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
     $scope.user = {}
 
@@ -75,13 +80,13 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
                         ngNotify.set(`Bejelentkezve, mint ${res.data[0].name}`, "success");
                         if(document.querySelector("#marad-e").checked) {
                             localStorage.setItem('loggedUser', JSON.stringify(res.data[0]));
-                            console.log(localStorage.getItem(loggedUser));
-                            console.log(sessionStorage.getItem(loggedUser));
+                            console.log(localStorage.getItem('loggedUser'));
+                            console.log(sessionStorage.getItem('loggedUser'));
                         }
                         else{
-                            sessionStorage.setItem = {loggedUser : res.data[0]};
-                            console.log(localStorage.getItem(loggedUser));
-                            console.log(sessionStorage.getItem(loggedUser));
+                            sessionStorage.setItem('loggedUser', JSON.stringify(res.data[0]));
+                            console.log(localStorage.getItem('loggedUser'));
+                            console.log(sessionStorage.getItem('loggedUser'));
                         }
                     }
                     else {
