@@ -68,7 +68,8 @@ app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
 
 app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
     $scope.user = {}
-
+    localStorage.clear();
+    sessionStorage.clear();
     $scope.login = function(){
         if($scope.user.email == null || $scope.user.password == null){
             ngNotify.set("Nem adtál meg minden adatot!", "error");
@@ -81,10 +82,14 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
                     if (res.data[0].password == CryptoJS.SHA1($scope.user.password).toString()) {
                         ngNotify.set(`Bejelentkezve, mint ${res.data[0].name}`, "success");
                         if(document.querySelector("#marad-e").checked) {
-                            localStorage.setItem = {loggedUser : res.data[0]};
+                            localStorage.setItem("loggedUser", JSON.stringify(res.data[0]));
+                            console.log(localStorage.getItem("loggedUser"));
+                            console.log(sessionStorage.getItem("loggedUser"));
                         }
                         else{
-                            sessionStorage.setItem = {loggedUser : res.data[0]};
+                            sessionStorage.setItem("loggedUser", JSON.stringify(res.data[0]));
+                            console.log(localStorage.getItem("loggedUser"));
+                            console.log(sessionStorage.getItem("loggedUser"));
                         }
                     }
                     else {
