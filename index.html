@@ -29,11 +29,12 @@
             </div>
             <div class="position-absolute top-0 end-0 mt-2 d-flex">
                 <a class="nav-link" href="#!/postalada"><img class="nav_img png-mid m-1" src="icons/email.png"></a>
-                <a class="nav-link" href="#!/profil" data-bs-toggle="modal" data-bs-target="#Reg_modal" ng-click="user()"><img class="nav_img png-mid m-1" src="icons/profile-user.png"></a>
+                <a class="nav-link" ng-if="!currentUser" data-bs-toggle="modal" data-bs-target="#Reg_modal" ng-click="user()"><img class="nav_img png-mid m-1" src="icons/profile-user.png"></a>
+                <a class="nav-link" href="#!/profil" ng-if="currentUser" ng-click="user()"><img class="nav_img png-mid m-1" src="icons/profile-user.png"></a>
             </div>
         </div>
     </nav>
-      
+
     <!-- Reg Modal Form -->
     <div class="modal fade" id="Reg_modal" tabindex="-1" ng-controller="regUserCtrl" >
         <div class="modal-dialog">
@@ -69,11 +70,10 @@
                         </div>
                     </form>
                 </div>
-                
             </div>
         </div>
     </div>
-      
+
     <!-- Login Modal Form -->
     <div class="modal fade" id="Login_modal" tabindex="-1" ng-controller="loginUserCtrl">
         <div class="modal-dialog">
@@ -105,7 +105,6 @@
                         </div>
                     </form>
                 </div>
-                
             </div>
         </div>
     </div>

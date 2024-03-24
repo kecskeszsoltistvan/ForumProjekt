@@ -2,7 +2,10 @@ var app = angular.module("forumApp", ["ngRoute", "ui.bootstrap", "ngNotify"])
 
 app.run(function($rootScope){
     $rootScope.title = "Fórum"
-  
+    if(localStorage.getItem("loggedUser") != null){
+        sessionStorage.setItem('loggedUser', localStorage.getItem("loggedUser"));
+    }
+    $rootScope.currentUser= sessionStorage.getItem('loggedUser');
     $rootScope.serverUrl = "http://localhost:3000"
    
 })
@@ -68,8 +71,8 @@ app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
 
 app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
     $scope.user = {}
-    localStorage.clear();
-    sessionStorage.clear();
+    // localStorage.clear();
+    // sessionStorage.clear();
     $scope.login = function(){
         if($scope.user.email == null || $scope.user.password == null){
             ngNotify.set("Nem adtál meg minden adatot!", "error");
@@ -82,15 +85,13 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
                     if (res.data[0].password == CryptoJS.SHA1($scope.user.password).toString()) {
                         ngNotify.set(`Bejelentkezve, mint ${res.data[0].name}`, "success");
                         if(document.querySelector("#marad-e").checked) {
-                            localStorage.setItem("loggedUser", JSON.stringify(res.data[0]));
-                            console.log(localStorage.getItem("loggedUser"));
-                            console.log(sessionStorage.getItem("loggedUser"));
+                            localStorage.setItem('loggedUser', JSON.stringify(res.data[0]));
+                            sessionStorage.setItem('loggedUser', JSON.stringify(res.data[0]));
                         }
                         else{
-                            sessionStorage.setItem("loggedUser", JSON.stringify(res.data[0]));
-                            console.log(localStorage.getItem("loggedUser"));
-                            console.log(sessionStorage.getItem("loggedUser"));
+                            sessionStorage.setItem('loggedUser', JSON.stringify(res.data[0]));
                         }
+                        $rootScope.currentUser= sessionStorage.getItem('loggedUser');
                     }
                     else {
                         ngNotify.set(`Helytelen jelszó!`, "error");
