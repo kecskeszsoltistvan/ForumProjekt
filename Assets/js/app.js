@@ -30,8 +30,6 @@ app.config(function($routeProvider){
     )
 })
 
-
-/*
 var listElement = document.getElementById('myList');
 let teszt = getChildren(document.getElementById('legutobbi'));
 
@@ -61,10 +59,11 @@ function getSiblings(n) {
 }
 
 function test(x){
-  let s = teszt[x-1];
-  let y = s.getElementsByTagName('img');
+  let s = teszt[x].style.display;
+  console.clear();
   for (let index = 0; index < teszt.length; index++) {
     if (index % 2 == 0) {
+      console.log('Páros');
       teszt[index].style.display = 'none';
     }
     else {
@@ -72,16 +71,18 @@ function test(x){
     }
   }
 
-
-  if (teszt[x].style.display === 'block' && y[0].className == 'dropdown flipped'){
+  if (s == 'block'){
+    teszt[x-1].getElementsByTagName('img')[0].className = 'dropdown';
     teszt[x].style.display = 'none';
-    y[0].className = 'dropdown';
   } else {
     teszt[x].style.display = 'block';
-    y[0].className = 'dropdown flipped';
+    teszt[x-1].getElementsByTagName('img')[0].className = 'dropdown flipped';
   }
+
+  
 }
-*/
+
+
 
 
 
