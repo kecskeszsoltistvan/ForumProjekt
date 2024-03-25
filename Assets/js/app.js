@@ -21,6 +21,7 @@ app.config(function($routeProvider){
     })
     .when("/legutobbi", {
         templateUrl: "Views/legutobbi.html",
+        controller: "Assets/controller/legutobbi.js"
     })
     .when("/szabalyzat", {
         templateUrl: "Views/szabalyzat.html",
