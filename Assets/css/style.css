@@ -45,7 +45,9 @@ body{
     border-radius: 10px;
     background-color: #676F9E;
 }
-
+.btn-danger{
+    background-color: #fa7b77;
+}
 .btn:hover{
     background-color: #F9B079;
 }
@@ -241,10 +243,13 @@ h3{
 .name{
     margin: 15px 10px 10px 10px;
 }
-
+.profiloldal{
+    display: flex;
+    flex-direction: row;
+    padding-top: 7vh;
+}
 .profil{
-    height: 51px;
-    width: auto;
+    display: flex;
 }
 .datum{
     color: #676F9E;
