@@ -248,9 +248,6 @@ h3{
     flex-direction: row;
     padding-top: 7vh;
 }
-.profil{
-    display: flex;
-}
 .datum{
     color: #676F9E;
 }
@@ -311,12 +308,16 @@ h3{
     #rolunkkartyak:last-child{
         margin-bottom: 120px;
     }
-    .rolunkcard {
+  
+    .rolunkcard, .profiloldal{
         flex-direction: column; 
         align-items: center; 
         max-width: 90%; 
         margin-left: auto;
         margin-right: auto;
+    }
+    .profil{
+        width: 60%;
     }
 
     .rolunkkepek {
