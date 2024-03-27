@@ -86,44 +86,48 @@ app.delete("/users/:pk", cors(), (req, res)=>{
     });
 })
 
-/*
-// Worktimes table
-// ------------------------------
-// GET all worktimes
-app.get("/worktimes", (req, res)=>{
-    pool.query('SELECT * FROM worktimes', (error, results)=>{
+// GET table
+app.get("/:table", cors(), (req, res)=>{
+    let table = req.params.table;
+    pool.query(`SELECT * FROM ${table}`, (error, results)=>{
         if (error) throw res.send(error);
-        
         res.send(results)
     });
 })
 
-// GET all worktimes Between dates
-
-// GET all worktimes by employee (ID)
-app.get("/worktimes/:employee", (req, res)=>{
-    let employee = req.params.employee
-    pool.query(`SELECT * FROM worktimes WHERE ID=?`, employee, (error, results)=>{
+// GET table/field
+app.get("/:table/:field", cors(), (req, res)=>{
+    let table = req.params.table;
+    let field = req.params.field;
+    pool.query(`SELECT * FROM ${table} WHERE ${field}`, (error, results)=>{
         if (error) throw res.send(error);
-        
         res.send(results)
     });
 })
 
-// GET all worktimes by employee between dates
-
-// POST new worktimes
-// PATCH one worktime by PK
-// DELETE one worktime by PK
-app.delete("/worktimes/:pk", (req, res)=>{
-    let pk = req.params.pk
-    pool.query(`DELETE FROM worktimes WHERE ID=?`, pk, (error, results)=>{
+// GET table/field by 
+app.get("/:table/:field/:op/:value", cors(), (req, res)=>{
+    let table = req.params.table;
+    let field = req.params.field;
+    pool.query(`SELECT * FROM ${table} WHERE ${field}`, (error, results)=>{
         if (error) throw res.send(error);
-        
         res.send(results)
     });
 })
-*/
+
+function getOp(op){
+    switch(op){
+      case 'eq': {op = '='; break}
+      case 'lt': {op = '<'; break}
+      case 'gt': {op = '>'; break}
+      case 'lte': {op = '<='; break}
+      case 'gte': {op = '>='; break}
+      case 'not': {op = '!='; break}
+      case 'lk': {op = ' like '; break}
+    }
+    return op;
+  }
+
 app.listen(port, ()=>{
     console.log(`A szerver hallgatózik a ${port} porton...`)
 })
