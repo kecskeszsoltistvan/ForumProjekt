@@ -1,4 +1,10 @@
-body{
+ul {
+    display: none;
+    background-color: #434669;
+    border-radius: 15px;
+  }
+
+  body{
     background-color: #434669;
     background-image: url(../img/main_bg.svg);
     background-repeat: repeat;
@@ -150,6 +156,16 @@ hr{
 
 h4{
     text-decoration: underline;
+    user-select: none;
+}
+.clickable-h4:hover{
+    cursor: pointer;
+}
+.clickable-h4{
+    display: flex;
+    min-width: 10.25rem;
+    max-width: 10.25rem;
+    justify-content: space-between;
 }
 
 h5{
@@ -343,4 +359,12 @@ p{
     color: black;
     margin: 0px;
     padding: 0px;
+}
+.dropdown{
+    height: 30px;
+    width: 30px;
+    transition: transform 0.3s;
+}
+.flipped{
+    transform: rotateZ(180deg);
 }
