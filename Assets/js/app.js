@@ -24,7 +24,7 @@ app.config(function($routeProvider){
     })
     .when("/legutobbi", {
         templateUrl: "Views/legutobbi.html",
-        controller: "../"
+        controller: 'legutobbi'
     })
     .when("/szabalyzat", {
         templateUrl: "Views/szabalyzat.html",
