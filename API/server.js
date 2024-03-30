@@ -27,9 +27,6 @@ app.get('/', function (req, res) {
 //      Endpoints
 // --------------------
 
-// Employees table
-// ------------------------------
-
 // GET users
 app.get("/users", cors(), (req, res)=>{
     pool.query('SELECT * FROM users', (error, results)=>{

@@ -3,6 +3,10 @@ ul {
     background-color: #434669;
     border-radius: 15px;
   }
+  .profiloldalfelsorolas{
+    display: block;
+    background-color: #2E3150;
+}
 
   body{
     background-color: #434669;
@@ -51,7 +55,9 @@ ul {
     border-radius: 10px;
     background-color: #676F9E;
 }
-
+.btn-danger{
+    background-color: #fa7b77;
+}
 .btn:hover{
     background-color: #F9B079;
 }
@@ -257,10 +263,10 @@ h3{
 .name{
     margin: 15px 10px 10px 10px;
 }
-
-.profil{
-    height: 51px;
-    width: auto;
+.profiloldal{
+    display: flex;
+    flex-direction: row;
+    padding-top: 7vh;
 }
 .datum{
     color: #676F9E;
@@ -322,12 +328,16 @@ h3{
     #rolunkkartyak:last-child{
         margin-bottom: 120px;
     }
-    .rolunkcard {
+  
+    .rolunkcard, .profiloldal{
         flex-direction: column; 
         align-items: center; 
         max-width: 90%; 
         margin-left: auto;
         margin-right: auto;
+    }
+    .profil{
+        width: 60%;
     }
 
     .rolunkkepek {
@@ -361,4 +371,5 @@ p{
 }
 .flipped{
     transform: rotateZ(180deg);
+}
 }
