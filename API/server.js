@@ -26,7 +26,7 @@ app.get('/', function (req, res) {
 // --------------------
 //      Endpoints
 // --------------------
-
+/*
 // GET users
 app.get("/users", cors(), (req, res)=>{
     pool.query('SELECT * FROM users', (error, results)=>{
@@ -44,7 +44,7 @@ app.get("/users/:pk", cors(), (req, res)=>{
         res.send(results)
     });
 })
-
+*/
 // POST new user
 app.post("/users", cors(), (req, res)=>{
     let data  = req.body
@@ -95,25 +95,44 @@ app.get("/:table", cors(), (req, res)=>{
     });
 })
 
-// GET table/field
-app.get("/:table/:field", cors(), (req, res)=>{
-    let table = req.params.table;
-    let field = req.params.field;
-    pool.query(`SELECT * FROM ${table} WHERE ${field}`, (error, results)=>{
-        if (error) throw res.send(error);
-        res.send(results)
-    });
-})
-
-// GET table/field by 
+// GET table/field/op/vlaue
 app.get("/:table/:field/:op/:value", cors(), (req, res)=>{
     let table = req.params.table;
     let field = req.params.field;
-    pool.query(`SELECT * FROM ${table} WHERE ${field}`, (error, results)=>{
+    let op = req.params.op;
+    let value = req.params.value;
+
+    op = getOp(op);
+    if(op == "like"){
+        value = `%${value}$`
+    }
+
+    pool.query(`SELECT * FROM ${table} WHERE ${field} ${op} '${value}' `, (error, results)=>{
         if (error) throw res.send(error);
-        res.send(results)
+        res.send(results);
     });
 })
+
+//GEt posts from category
+app.get("/posts/category/:id", cors(), (req, res)=>{
+    let id = req.params.id;
+
+    pool.query(`SELECT posts.ID, posts.user_id, posts.category_id, posts.title, posts.text, posts.created_at FROM posts JOIN categorys ON posts.category_id = categorys.ID WHERE posts.category_id = ${id}`, (error, results)=>{
+        if (error) throw res.send(error);
+        res.send(results);
+    })
+}) 
+
+//POST posts to category
+app.post("/posts/category/:id", cors(), (req, res)=>{
+    let id = req.params.id;
+    let data = req.body;
+
+    pool.query(`INSERT INTO posts (user_id, category_id, title, text, created_at) VALUES ( ${data.user_id}, ${id}, "${data.title}", "${data.text}", "${data.created_at}")`, (error, results)=>{
+        if (error) throw res.send(error);
+        res.send(results);
+    })
+}) 
 
 function getOp(op){
     switch(op){
