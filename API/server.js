@@ -127,7 +127,7 @@ app.get("/posts/category/:id", cors(), (req, res)=>{
 app.post("/posts/category/:id", cors(), (req, res)=>{
     let id = req.params.id;
     let data = req.body;
-
+    
     pool.query(`INSERT INTO posts (user_id, category_id, title, text, created_at) VALUES ( ${data.user_id}, ${id}, "${data.title}", "${data.text}", "${data.created_at}")`, (error, results)=>{
         if (error) throw res.send(error);
         res.send(results);
