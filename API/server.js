@@ -113,6 +113,17 @@ app.get("/:table/:field/:op/:value", cors(), (req, res)=>{
     });
 })
 
+//DELETE record by pk
+app.delete("/:table/:id", cors(), (req, res)=>{
+    let id = req.params.id;
+    let table = req.params.table;
+    
+    pool.query(`DELETE FROM ${table} WHERE ID=${id}`, (error, results)=>{
+        if (error) throw res.send(error);
+        res.send(results);
+    })
+})
+
 //GEt posts from category
 app.get("/posts/category/:id", cors(), (req, res)=>{
     let id = req.params.id;
@@ -134,15 +145,6 @@ app.post("/posts/category/:id", cors(), (req, res)=>{
     })
 })
 
-//DELETE post by pk
-app.delete("/posts/:id", cors(), (req, res)=>{
-    let id = req.params.id;
-    
-    pool.query(`DELETE FROM posts WHERE ID=${id}`, (error, results)=>{
-        if (error) throw res.send(error);
-        res.send(results);
-    })
-})
 
 // PATCH post by PK
 app.patch("/posts/:id", cors(), (req, res)=>{
