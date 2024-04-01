@@ -123,7 +123,7 @@ app.get("/posts/category/:id", cors(), (req, res)=>{
     })
 }) 
 
-//POST posts to category
+//POST post to category
 app.post("/posts/category/:id", cors(), (req, res)=>{
     let id = req.params.id;
     let data = req.body;
@@ -132,8 +132,31 @@ app.post("/posts/category/:id", cors(), (req, res)=>{
         if (error) throw res.send(error);
         res.send(results);
     })
-}) 
+})
 
+//DELETE post by pk
+app.delete("/posts/:id", cors(), (req, res)=>{
+    let id = req.params.id;
+    
+    pool.query(`DELETE FROM posts WHERE ID=${id}`, (error, results)=>{
+        if (error) throw res.send(error);
+        res.send(results);
+    })
+})
+
+// PATCH post by PK
+app.patch("/posts/:id", cors(), (req, res)=>{
+    let id = req.params.id
+    let data  = req.body
+    
+    pool.query(`UPDATE posts SET user_id=${data.user_id}, category_id=${data.category_id}, title="${data.title}", text="${data.text}", created_at="${data.created_at}" WHERE ID=${id}`, (error, results)=>{
+        if (error) throw res.status(500).send(error)
+        res.status(200).send(results)
+    });
+
+})
+// Itt velem szemben ez a nő úgy néz ki mint az Irén
+// kicsit kajak:DD
 function getOp(op){
     switch(op){
       case 'eq': {op = '='; break}
