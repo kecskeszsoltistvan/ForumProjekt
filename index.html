@@ -23,17 +23,18 @@
             </div>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link" href="#!/kategoria">Kedvencek</a>
-                    <a class="nav-link" href="#!/kategoria">Összes</a>
+                    <a class="nav-link" href="#">Kedvencek</a>
+                    <a class="nav-link" href="#">Összes</a>
                 </div>
             </div>
             <div class="position-absolute top-0 end-0 mt-2 d-flex">
                 <a class="nav-link" href="#!/postalada"><img class="nav_img png-mid m-1" src="icons/email.png"></a>
-                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#Reg_modal"><img class="nav_img png-mid m-1" src="icons/profile-user.png"></a>
+                <a class="nav-link" ng-if="!currentUser" data-bs-toggle="modal" data-bs-target="#Reg_modal" ng-click="user()"><img class="nav_img png-mid m-1" src="icons/profile-user.png"></a>
+                <a class="nav-link" href="#!/profil" ng-if="currentUser" ng-click="user()"><img class="nav_img png-mid m-1" src="icons/profile-user.png"></a>
             </div>
         </div>
     </nav>
-      
+
     <!-- Reg Modal Form -->
     <div class="modal fade" id="Reg_modal" tabindex="-1" ng-controller="regUserCtrl" >
         <div class="modal-dialog">
@@ -69,11 +70,10 @@
                         </div>
                     </form>
                 </div>
-                
             </div>
         </div>
     </div>
-      
+
     <!-- Login Modal Form -->
     <div class="modal fade" id="Login_modal" tabindex="-1" ng-controller="loginUserCtrl">
         <div class="modal-dialog">
@@ -105,7 +105,6 @@
                         </div>
                     </form>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -113,12 +112,12 @@
     <main ng-view>  
         <h1>Kategória oldal</h1>
         <div class="kategoria-rendezes">
-            <div class="content kategoria-interface">
+            <div class="post kategoria-interface">
                 <div class="soros">
                     <div class="soros">
                         <img class="kiskep" src="icons/profile-user.png">
                         <div class="oszlopos">
-                            <h5 style="margin-right: 12px; font-size:larger; font-weight: bold;">Felhasználó</h5>
+                            <h5 style="margin-right: 20px; font-size:larger; font-weight: bold;">Felhasználó</h5>
                             <h6 class="alcím">Tulajdonos</h6>
                         </div>
                     </div>
@@ -136,7 +135,7 @@
                 <h5 id="post-button">Poszt létrehozása</h5>
             </div>
             <div class="kategoriak">
-                <div class="content">
+                <div class="contents">
                     <div class="soros">
                         <h5><img class="kiskep" src="icons/profile-user.png">Üzenetküldő</h5>
                         <img class="kiskep" src="icons/more.png">
@@ -150,7 +149,7 @@
                         <p class="datum"><strong>2024.01.05</strong></p>
                     </div>
                 </div>
-                <div class="content">
+                <div class="contents">
                     <div class="soros">
                         <h5><img class="kiskep" src="icons/profile-user.png">Üzenetküldő</h5>
                         <img class="kiskep" src="icons/more.png">
@@ -164,7 +163,7 @@
                         <p class="datum"><strong>2024.01.05</strong></p>
                     </div>
                 </div>
-                <div class="content">
+                <div class="contents">
                     <div class="soros">
                         <h5><img class="kiskep" src="icons/profile-user.png">Üzenetküldő</h5>
                         <img class="kiskep" src="icons/more.png">
@@ -202,5 +201,6 @@
     <script src="Assets/js/ui-bootstrap-tpls-2.5.0.min.js"></script>
     <script src="Assets/js/axios.min.js"></script>
     <script src="Assets/js/app.js"></script>
+    <script src="Assets/controller/legutobbi.js"></script>
 </body>
 </html>
