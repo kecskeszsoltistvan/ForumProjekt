@@ -1,4 +1,4 @@
-app.controller('legutobbi', function($scope, ngNotify, $rootScope, $location){
+app.controller('legutobbi', function($scope){
 
   $scope.getChildren = function(n, skipMe){
     var r = [];
