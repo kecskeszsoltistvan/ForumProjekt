@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Már 25. 13:17
+-- Létrehozás ideje: 2024. Ápr 03. 11:31
 -- Kiszolgáló verziója: 10.4.6-MariaDB
 -- PHP verzió: 7.3.8
 
@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `categorys`
+-- Tábla szerkezet ehhez a táblához `categories`
 --
 
-CREATE TABLE `categorys` (
+CREATE TABLE `categories` (
   `ID` int(11) NOT NULL,
   `title` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   `body` text COLLATE utf8_hungarian_ci NOT NULL,
@@ -36,11 +36,25 @@ CREATE TABLE `categorys` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `categorys`
+-- A tábla adatainak kiíratása `categories`
 --
 
-INSERT INTO `categorys` (`ID`, `title`, `body`, `created_at`) VALUES
+INSERT INTO `categories` (`ID`, `title`, `body`, `created_at`) VALUES
 (1, 'Teszt Kategória', 'Ez egy teszt kategóra egy kis leírással meg címmel, ide nyomatjuk majd a dolgokat amíg nem működik megfelelően az oldal.', '2024-03-25');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `comments`
+--
+
+CREATE TABLE `comments` (
+  `ID` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `text` text COLLATE utf8_hungarian_ci NOT NULL,
+  `created_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
 
@@ -89,10 +103,18 @@ INSERT INTO `users` (`ID`, `name`, `email`, `password`) VALUES
 --
 
 --
--- A tábla indexei `categorys`
+-- A tábla indexei `categories`
 --
-ALTER TABLE `categorys`
+ALTER TABLE `categories`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- A tábla indexei `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `post_id` (`post_id`,`user_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- A tábla indexei `posts`
@@ -113,10 +135,16 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT a táblához `categorys`
+-- AUTO_INCREMENT a táblához `categories`
 --
-ALTER TABLE `categorys`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `categories`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT a táblához `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `posts`
@@ -135,11 +163,18 @@ ALTER TABLE `users`
 --
 
 --
+-- Megkötések a táblához `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`ID`),
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`ID`);
+
+--
 -- Megkötések a táblához `posts`
 --
 ALTER TABLE `posts`
   ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`ID`),
-  ADD CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categorys` (`ID`);
+  ADD CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
