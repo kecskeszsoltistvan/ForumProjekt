@@ -113,7 +113,7 @@ app.get("/:table/:field/:op/:value", cors(), (req, res)=>{
     });
 })
 
-//DELETE record by pk
+//DELETE record by id
 app.delete("/:table/:id", cors(), (req, res)=>{
     let id = req.params.id;
     let table = req.params.table;
