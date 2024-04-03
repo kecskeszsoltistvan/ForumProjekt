@@ -34,6 +34,7 @@ app.config(function($routeProvider){
     })
     .when("/postalada", {
         templateUrl: "Views/postalada.html",
+        controller: 'posta'
     })
     .when("/profil", {
         templateUrl: "Views/profil.html",
