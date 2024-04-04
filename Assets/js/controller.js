@@ -77,31 +77,36 @@ app.controller('legutobbi', function($scope){
     
   }) 
 
-  app.controller('forum-renderer', function($scope, ngNotify, $rootScope, $location){
-    let holder = document.getElementById('category-holder')
-    console.log("Fórumok oldal");
-    axios.get(`${$rootScope.serverUrl}/categories`).then(res => {
-      console.log(res.data);
-      res.data.forEach(cat => {
-        let c_body = document.createElement('div');
-        c_body.classList.add('kategoriak');
-        let c_header = document.createElement('div');
-        c_header.classList.add('header');
-        let c_title = document.createElement('h2');
-        c_title.classList.add('cim');
-        c_title.innerHTML = `${cat.title}`;
-        c_header.appendChild(c_title);
-        c_body.appendChild(c_header);
-        c_body.appendChild(document.createElement('hr'));
-        let c_desc = document.createElement('p');
-        c_desc.innerHTML = `${cat.body}`;
-        c_body.appendChild(c_desc);
-        let c_date = document.createElement('p');
-        c_date.classList.add('datum')
-        c_date.innerHTML = `${cat.created_at.split('T')[0]}`
-        c_body.appendChild(c_date);
-        holder.appendChild(c_body);
-        console.log(`${cat.title}`);
-      });
-  }) 
+app.controller('forum-renderer', function($scope, ngNotify, $rootScope, $location){
+  
+
+
+  /*
+  let holder = document.getElementById('category-holder')
+  console.log("Fórumok oldal");
+  axios.get(`${$rootScope.serverUrl}/categories`).then(res => {
+    console.log(res.data);
+    res.data.forEach(cat => {
+      let c_body = document.createElement('div');
+      c_body.classList.add('kategoriak');
+      let c_header = document.createElement('div');
+      c_header.classList.add('header');
+      let c_title = document.createElement('h2');
+      c_title.classList.add('cim');
+      c_title.innerHTML = `${cat.title}`;
+      c_header.appendChild(c_title);
+      c_body.appendChild(c_header);
+      c_body.appendChild(document.createElement('hr'));
+      let c_desc = document.createElement('p');
+      c_desc.innerHTML = `${cat.body}`;
+      c_body.appendChild(c_desc);
+      let c_date = document.createElement('p');
+      c_date.classList.add('datum')
+      c_date.innerHTML = `${cat.created_at.split('T')[0]}`
+      c_body.appendChild(c_date);
+      holder.appendChild(c_body);
+      console.log(`${cat.title}`);
+    });
+  })
+  */
 })

@@ -1,31 +1,11 @@
     <h1>Összes kategória</h1>
     <div id="category-holder">
-        <div class="kategoriak">
+        <div class="kategoriak" ng-repeat="item in categories">
             <div class="header">
-                <h2 class="cim">Kutyaimádók</h2>
-                <!--
-                <div class="user">
-                    <img class="profil kis" src="icons/profile-user.png"><h6 class="name">username</h6><img class="kedvenc" src="icons/star.png">
-                </div>
-                -->
-            </div>
-            
-            <hr>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem, id reprehenderit eius hic labore aut possimus quae distinctio atque! Doloremque tempore libero tenetur. Enim quos officia consequatur veniam non ducimus.</p>
-            <p class="datum">2024.04.04</p>
-        </div>
-        <div class="kategoriak">
-            <div class="header">
-                <h2 class="cim">Ananász-főző fesztivál</h2>
-                <!--
-                <div class="user">
-                    <img class="profil kis" src="icons/profile-user.png"><h6 class="name">username</h6><img class="kedvenc" src="icons/star_empty.png">
-                </div>
-                -->
+                <h2 class="cim">{{item.title}}</h2>
             </div>
             <hr>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem, id reprehenderit eius hic labore aut possimus quae distinctio atque! Doloremque tempore libero tenetur. Enim quos officia consequatur veniam non ducimus.</p>
-            <p class="datum">2024.01.05</p>
+            <p>{{item.body}}</p>
+            <p class="datum">{{item.created_at.split('T')[0]}}</p>
         </div>
     </div>
-        

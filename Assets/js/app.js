@@ -1,13 +1,20 @@
 var app = angular.module("forumApp", ["ngRoute", "ui.bootstrap", "ngNotify"])
 
 app.run(function($rootScope){
-    $rootScope.title = "Fórum"
     if(localStorage.getItem("loggedUser") != null){
         sessionStorage.setItem('loggedUser', localStorage.getItem("loggedUser"));
     }
     $rootScope.currentUser= sessionStorage.getItem('loggedUser');
     $rootScope.serverUrl = "http://localhost:3000"
-   
+    
+    $rootScope.title = "Fórum";
+
+    $rootScope.categories = [];
+
+    axios.get(`${$rootScope.serverUrl}/categories`).then(res=>{
+        $rootScope.categories = res.data;
+    })
+
 })
 
 app.config(function($routeProvider){
