@@ -1,13 +1,20 @@
 var app = angular.module("forumApp", ["ngRoute", "ui.bootstrap", "ngNotify"])
 
 app.run(function($rootScope){
-    $rootScope.title = "Fórum"
     if(localStorage.getItem("loggedUser") != null){
         sessionStorage.setItem('loggedUser', localStorage.getItem("loggedUser"));
     }
     $rootScope.currentUser= sessionStorage.getItem('loggedUser');
     $rootScope.serverUrl = "http://localhost:3000"
-   
+    
+    $rootScope.title = "Fórum";
+
+    $rootScope.categories = [];
+
+    axios.get(`${$rootScope.serverUrl}/categories`).then(res=>{
+        $rootScope.categories = res.data;
+    })
+
 })
 
 app.config(function($routeProvider){
@@ -40,6 +47,10 @@ app.config(function($routeProvider){
         templateUrl: "Views/profil.html",
         controller: 'profil'
     })
+    .when("/forum", {
+        templateUrl: "Views/forum.html",
+        controller: 'forum-renderer'
+    })
     .otherwise(
         {redirecTo: "/main"}
     )
@@ -60,7 +71,6 @@ app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
                     email: $scope.user.email,
                     password: CryptoJS.SHA1($scope.user.password).toString()
                 }
-                console.log(data)
                 axios.post($rootScope.serverUrl + `/users/`, data).then(res => {
                     ngNotify.set("Sikeres regisztráció!", "success")
                 })
@@ -81,8 +91,6 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
             axios.get(`${$rootScope.serverUrl}/login/${$scope.user.email}`).then(res => {
                 console.log(res.data)
                 if(res.data.length != 0){
-                    console.log("Van ilyen felhasználó!")
-                    console.log(`${res.data[0].password}\n${CryptoJS.SHA1($scope.user.password).toString()}`)
                     if (res.data[0].password == CryptoJS.SHA1($scope.user.password).toString()) {
                         ngNotify.set(`Bejelentkezve, mint ${res.data[0].name}`, "success");
                         if(document.querySelector("#marad-e").checked) {

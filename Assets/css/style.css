@@ -216,15 +216,16 @@ h3{
 
 .kategoriak{
     background-color: #2E3150;
-    padding: 20px 20px 20px 20px;
+    padding: 20px 20px 40px 20px;
     border-radius: 20px;
     text-align: justify;
-    margin: 10px 10px 10px 10px;
+    margin: auto;
     color: white;
     font-size: 18px;
     flex-direction: column;
     max-width: 1000px;
     min-width: 345px;
+    margin-bottom: 20px;
 }
 #rolunkkartyak:last-child{
     margin-bottom: 90px;
@@ -233,18 +234,19 @@ h3{
 .datum{
     color: #676F9E;
     float: right;
+    font-weight: bold;
 }
 
 .cim{
     display: flex;
     flex-wrap: nowrap;
-    padding: 10px 10px 10px 10px;
+    padding: auto 10px auto 10px;
 }
 
 .kedvenc{
     height: 33px;
     width: auto;
-    margin-top: 10px;
+    margin: auto 0px auto 0px;
 }
 
 .header{
@@ -261,7 +263,7 @@ h3{
 }
 
 .name{
-    margin: 15px 10px 10px 10px;
+    margin: auto 10px auto 10px;
 }
 .profiloldal{
     display: flex;
@@ -372,4 +374,8 @@ p{
 .flipped{
     transform: rotateZ(180deg);
 }
+.kis{
+    max-height: 50px;
+    max-width: auto;
+    padding: 0px;
 }
