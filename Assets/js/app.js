@@ -73,6 +73,7 @@ app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
                 }
                 axios.post($rootScope.serverUrl + `/users/`, data).then(res => {
                     ngNotify.set("Sikeres regisztráció!", "success")
+                    location.reload();
                 })
                 
             }

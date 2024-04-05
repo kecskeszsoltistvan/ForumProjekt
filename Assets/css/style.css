@@ -29,6 +29,7 @@ ul {
 
 .nav_img{
     width: 64px;
+    cursor: pointer;
 }
 
 .navbar-toggler, .navbar-toggler-icon{
@@ -215,6 +216,7 @@ h3{
 }
 
 .kategoriak{
+    cursor: pointer;
     background-color: #2E3150;
     padding: 20px 20px 40px 20px;
     border-radius: 20px;
