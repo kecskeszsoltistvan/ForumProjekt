@@ -429,7 +429,8 @@ p{
     color: white;
     font-size: 18px;
     width: 60vw;
-    min-width: 650px;
+    min-width: 500px;
+    max-width: 650px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
@@ -453,4 +454,18 @@ p{
     justify-content: space-around;
     flex-direction: column;
     background-color: #2E3150;
+}
+
+@media only screen and (max-width: 1000px) {
+    .kategoriak:last-child{
+        margin-top: 370px;
+    }
+    .contents{
+        min-width: 100%;
+        margin-left: 50%;
+    }
+    .post {
+        margin-right: 10%;  
+        min-width: 50%;
+    }
 }
