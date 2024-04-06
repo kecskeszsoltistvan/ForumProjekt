@@ -157,8 +157,6 @@ app.patch("/posts/:id", cors(), (req, res)=>{
     });
 
 })
-// Itt velem szemben ez a nő úgy néz ki mint az Irén
-// kicsit kajak:DD
 
 // POST new category
 app.post("/categories", cors(), (req, res)=>{
@@ -181,17 +179,29 @@ app.patch("/categories/:id", cors(), (req, res)=>{
     })
 })
 
-/*
-// DELETE category and posts by categry id
-app.delete("/category/posts/:id", cors(), (req, res)=>{
+//POST cooment to post
+app.post("/comments/post/:id", cors(), (req, res)=>{
     let id = req.params.id;
-
-    pool.query(`DELETE FROM posts WHERE category_id=${id} DELETE FROM categories WHERE ID=${id}`, (error, results)=>{
-        if (error) throw res.status(500).send(error);
-        res.status(200).send(results);
+    let data = req.body;
+    
+    pool.query(`INSERT INTO comments (post_id, user_id, text, created_at) VALUES ( ${id}, ${data.user_id}, "${data.text}", "${data.created_at}")`, (error, results)=>{
+        if (error) throw res.send(error);
+        res.send(results);
     })
 })
-*/
+
+// PATCH comment by PK
+app.patch("/comments/:id", cors(), (req, res)=>{
+    let id = req.params.id;
+    let data  = req.body;
+    
+    pool.query(`UPDATE comments SET post_id=${data.post_id}, user_id=${data.user_id}, text="${data.text}", created_at="${data.created_at}" WHERE ID=${id}`, (error, results)=>{
+        if (error) throw res.status(500).send(error);
+        res.status(200).send(results);
+    });
+
+})
+
 
 function getOp(op){
     switch(op){
