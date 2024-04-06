@@ -1,13 +1,20 @@
 var app = angular.module("forumApp", ["ngRoute", "ui.bootstrap", "ngNotify"])
 
 app.run(function($rootScope){
-    $rootScope.title = "Fórum"
     if(localStorage.getItem("loggedUser") != null){
         sessionStorage.setItem('loggedUser', localStorage.getItem("loggedUser"));
     }
     $rootScope.currentUser= sessionStorage.getItem('loggedUser');
     $rootScope.serverUrl = "http://localhost:3000"
-   
+    
+    $rootScope.title = "Fórum";
+
+    $rootScope.categories = [];
+
+    axios.get(`${$rootScope.serverUrl}/categories`).then(res=>{
+        $rootScope.categories = res.data;
+    })
+
 })
 
 app.config(function($routeProvider){
@@ -34,67 +41,21 @@ app.config(function($routeProvider){
     })
     .when("/postalada", {
         templateUrl: "Views/postalada.html",
+        controller: 'posta'
     })
     .when("/profil", {
         templateUrl: "Views/profil.html",
+        controller: 'profil'
+    })
+    .when("/forum", {
+        templateUrl: "Views/forum.html",
+        controller: 'forum-renderer'
     })
     .otherwise(
         {redirecTo: "/main"}
     )
 })
-/*
-var listElement = document.getElementById('myList');
-let teszt = getChildren(document.getElementById('legutobbi'));
 
-if (window.getComputedStyle(listElement).display === 'none') {
-  listElement.style.display = 'none';
-} else {
-  listElement.style.display = 'block';
-}
-
-for (let index = 0; index < teszt.length; index++) {
-    if (index % 2 == 1) {
-        teszt[index].setAttribute("onClick", `test(${index + 1})`)
-    }
-}
-
-function getChildren(n, skipMe){
-    var r = [];
-    for ( ; n; n = n.nextSibling ) 
-       if ( n.nodeType == 1 && n != skipMe)
-          r.push( n );        
-    return r;
-};
-
-function getSiblings(n) {
-    return getChildren(n.parentNode.firstChild, n);
-    
-}
-
-function test(x){
-  let s = teszt[x].style.display;
-  console.clear();
-  for (let index = 0; index < teszt.length; index++) {
-    if (index % 2 == 0) {
-      console.log('Páros');
-      teszt[index].style.display = 'none';
-    }
-    else {
-      teszt[index].getElementsByTagName('img')[0].className = 'dropdown';
-    }
-  }
-
-  if (s == 'block'){
-    teszt[x-1].getElementsByTagName('img')[0].className = 'dropdown';
-    teszt[x].style.display = 'none';
-  } else {
-    teszt[x].style.display = 'block';
-    teszt[x-1].getElementsByTagName('img')[0].className = 'dropdown flipped';
-  }
-
-  
-}
-*/
 app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
     $scope.user = {}
 
@@ -110,7 +71,6 @@ app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
                     email: $scope.user.email,
                     password: CryptoJS.SHA1($scope.user.password).toString()
                 }
-                console.log(data)
                 axios.post($rootScope.serverUrl + `/users/`, data).then(res => {
                     ngNotify.set("Sikeres regisztráció!", "success")
                 })
@@ -122,8 +82,8 @@ app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
 
 app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
     $scope.user = {}
-    // localStorage.clear();
-    // sessionStorage.clear();
+    localStorage.clear();
+    sessionStorage.clear();
     $scope.login = function(){
         if($scope.user.email == null || $scope.user.password == null){
             ngNotify.set("Nem adtál meg minden adatot!", "error");
@@ -131,8 +91,6 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
             axios.get(`${$rootScope.serverUrl}/login/${$scope.user.email}`).then(res => {
                 console.log(res.data)
                 if(res.data.length != 0){
-                    console.log("Van ilyen felhasználó!")
-                    console.log(`${res.data[0].password}\n${CryptoJS.SHA1($scope.user.password).toString()}`)
                     if (res.data[0].password == CryptoJS.SHA1($scope.user.password).toString()) {
                         ngNotify.set(`Bejelentkezve, mint ${res.data[0].name}`, "success");
                         if(document.querySelector("#marad-e").checked) {
@@ -159,9 +117,3 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
 app.user = function(){
     
 }
-
-/*
-document.getElementById("rolunkBTN").onclick = function () {
-    location.href = "Views/rolunk.html";
-};
-*/

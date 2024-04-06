@@ -95,7 +95,7 @@ app.get("/:table", cors(), (req, res)=>{
     });
 })
 
-// GET table/field/op/vlaue
+// GET table/field/op/value
 app.get("/:table/:field/:op/:value", cors(), (req, res)=>{
     let table = req.params.table;
     let field = req.params.field;
