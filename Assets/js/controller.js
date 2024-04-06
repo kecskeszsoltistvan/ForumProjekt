@@ -74,27 +74,34 @@ app.controller('legutobbi', function($scope){
   }) 
 
 app.controller('forum-renderer', function($scope, ngNotify, $rootScope, $location){
-  $scope.category = function(id){
-    axios.get(`${$rootScope.serverUrl}/posts/category_id/eq/${id}`).then(res=>{
-      $rootScope.posts = res.data;
-      res.data.forEach(item => {
-          axios.get(`${$rootScope.serverUrl}/users/ID/eq/${item.user_id}`).then(res=>{
-              item.user_name = res.data[0].name
-              $rootScope.$apply();
-          })
-      });
-  })
+  $rootScope.category = function(id){
+    $rootScope.act_cat_id = id
+    localStorage.setItem('act_cat_id', $rootScope.act_cat_id)
     $location.path('/post')
   }
 })
 
+  
+
 app.controller('posts', function($scope, $rootScope){
+  axios.get(`${$rootScope.serverUrl}/posts/category_id/eq/${$rootScope.act_cat_id}`).then(res=>{
+    $rootScope.posts = res.data;
+    res.data.forEach(item => {
+        axios.get(`${$rootScope.serverUrl}/users/ID/eq/${item.user_id}`).then(res=>{
+            item.user_name = res.data[0].name
+            $rootScope.$apply();
+        })
+    });
+  })
+  //$rootScope.category()
   $scope.postRender = function(id){
     console.log(id)
   }
 
   $scope.newPost = function(){
     $scope.newpost = {}
+
+    $scope.newpost.post_
     console.log("ASD")
   }
 })

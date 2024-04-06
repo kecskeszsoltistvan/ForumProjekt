@@ -7,6 +7,8 @@ app.run(function($rootScope){
 
     $rootScope.posts = [];
     $rootScope.categories = [];
+    
+    $rootScope.act_cat_id = localStorage.getItem('act_cat_id');
 
     $rootScope.currentUser= sessionStorage.getItem('loggedUser');
     $rootScope.serverUrl = "http://localhost:3000"
@@ -92,8 +94,6 @@ app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
 
 app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
     $scope.user = {}
-    localStorage.clear();
-    sessionStorage.clear();
     $scope.login = function(){
         if($scope.user.email == null || $scope.user.password == null){
             ngNotify.set("Nem adtál meg minden adatot!", "error");
