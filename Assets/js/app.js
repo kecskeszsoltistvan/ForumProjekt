@@ -4,17 +4,24 @@ app.run(function($rootScope){
     if(localStorage.getItem("loggedUser") != null){
         sessionStorage.setItem('loggedUser', localStorage.getItem("loggedUser"));
     }
-    $rootScope.currentUser= sessionStorage.getItem('loggedUser');
+
+    $rootScope.posts = [];
+    $rootScope.categories = [];
+    
+    $rootScope.act_cat_id = JSON.parse(localStorage.getItem('act_cat_id'));
+
+    $rootScope.currentUser= JSON.parse(sessionStorage.getItem('loggedUser'));
     $rootScope.serverUrl = "http://localhost:3000"
     
     $rootScope.title = "Fórum";
+    $rootScope.currentDate = new Date().toISOString();
 
-    $rootScope.categories = [];
+    
 
     axios.get(`${$rootScope.serverUrl}/categories`).then(res=>{
         $rootScope.categories = res.data;
     })
-
+    
 })
 
 app.config(function($routeProvider){
@@ -51,6 +58,10 @@ app.config(function($routeProvider){
         templateUrl: "Views/forum.html",
         controller: 'forum-renderer'
     })
+    .when("/post", {
+        templateUrl: "Views/posztok.html",
+        controller: 'posts'
+    })
     .otherwise(
         {redirecTo: "/main"}
     )
@@ -73,6 +84,7 @@ app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
                 }
                 axios.post($rootScope.serverUrl + `/users/`, data).then(res => {
                     ngNotify.set("Sikeres regisztráció!", "success")
+                    location.reload();
                 })
                 
             }
@@ -82,8 +94,6 @@ app.controller("regUserCtrl",  function($scope, ngNotify, $rootScope){
 
 app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
     $scope.user = {}
-    localStorage.clear();
-    sessionStorage.clear();
     $scope.login = function(){
         if($scope.user.email == null || $scope.user.password == null){
             ngNotify.set("Nem adtál meg minden adatot!", "error");
@@ -114,6 +124,3 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
     }
 })
 
-app.user = function(){
-    
-}

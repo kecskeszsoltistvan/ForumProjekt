@@ -28,8 +28,8 @@
             </div>
             <div class="position-absolute top-0 end-0 mt-2 d-flex">
                 <a class="nav-link" href="#!/postalada"><img class="nav_img png-mid m-1" src="icons/email.png"></a>
-                <a class="nav-link" ng-if="!currentUser" data-bs-toggle="modal" data-bs-target="#Reg_modal" ng-click="user()"><img class="nav_img png-mid m-1" src="icons/profile-user.png"></a>
-                <a class="nav-link" href="#!/profil" ng-if="currentUser" ng-click="user()"><img class="nav_img png-mid m-1" src="icons/profile-user.png"></a>
+                <a class="nav-link" ng-if="!currentUser" data-bs-toggle="modal" data-bs-target="#Reg_modal"><img class="nav_img png-mid m-1" src="icons/profile-user.png"></a>
+                <a class="nav-link" href="#!/profil" ng-if="currentUser"><img class="nav_img png-mid m-1" src="icons/profile-user.png"></a>
             </div>
         </div>
     </nav>
@@ -85,10 +85,7 @@
                     <form>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email-cím</label>
-                            <input type="email" class="form-control" ng-model="user.email">
-                            <!--
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                            -->
+                            <input type="email" class="form-control" ng-model="user.email"> 
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Jelszó</label>

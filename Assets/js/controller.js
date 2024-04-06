@@ -48,10 +48,6 @@ app.controller('legutobbi', function($scope){
           teszt[index].setAttribute("onClick", `megnyit(${index + 1})`)
       }
   }
-  
-  
-    
-    
   })
 
   app.controller('posta', function($scope, ngNotify, $rootScope, $location){
@@ -78,35 +74,49 @@ app.controller('legutobbi', function($scope){
   }) 
 
 app.controller('forum-renderer', function($scope, ngNotify, $rootScope, $location){
+  $rootScope.category = function(id){
+    $rootScope.act_cat_id = id
+    localStorage.setItem('act_cat_id', $rootScope.act_cat_id)
+    $location.path('/post')
+  }
+})
+
   
 
-
-  /*
-  let holder = document.getElementById('category-holder')
-  console.log("Fórumok oldal");
-  axios.get(`${$rootScope.serverUrl}/categories`).then(res => {
-    console.log(res.data);
-    res.data.forEach(cat => {
-      let c_body = document.createElement('div');
-      c_body.classList.add('kategoriak');
-      let c_header = document.createElement('div');
-      c_header.classList.add('header');
-      let c_title = document.createElement('h2');
-      c_title.classList.add('cim');
-      c_title.innerHTML = `${cat.title}`;
-      c_header.appendChild(c_title);
-      c_body.appendChild(c_header);
-      c_body.appendChild(document.createElement('hr'));
-      let c_desc = document.createElement('p');
-      c_desc.innerHTML = `${cat.body}`;
-      c_body.appendChild(c_desc);
-      let c_date = document.createElement('p');
-      c_date.classList.add('datum')
-      c_date.innerHTML = `${cat.created_at.split('T')[0]}`
-      c_body.appendChild(c_date);
-      holder.appendChild(c_body);
-      console.log(`${cat.title}`);
+app.controller('posts', function($scope, $rootScope, ngNotify){
+  axios.get(`${$rootScope.serverUrl}/posts/category_id/eq/${$rootScope.act_cat_id}`).then(res=>{
+    $rootScope.posts = res.data;
+    res.data.forEach(item => {
+        axios.get(`${$rootScope.serverUrl}/users/ID/eq/${item.user_id}`).then(res=>{
+            item.user_name = res.data[0].name
+            $rootScope.$apply();
+        })
     });
   })
-  */
+  //$rootScope.category()
+  $scope.postRender = function(id){
+    console.log(id)
+  }
+
+  $scope.newpost = {}
+  $scope.newPost = function(){
+
+    if($rootScope.currentUser != null){
+      if($scope.newpost.text == null || $scope.newpost.title == null || $scope.newpost.text == "" || $scope.newpost.title == ""){
+        ngNotify.set(`Nem adtál meg címet vagy tartalmat.`, "error");
+      }else{
+        $scope.newpost.user_id = $rootScope.currentUser.ID
+        $scope.newpost.created_at = $rootScope.currentDate
+
+        axios.post(`${$rootScope.serverUrl}/posts/category/${$rootScope.act_cat_id}`, $scope.newpost).then(() => {
+          ngNotify.set("Sikeres posztolás!", "success")
+          location.reload();
+        });
+      }
+    }else{
+      ngNotify.set(`Nem vagy bejelentkezve.`, "error");
+    }
+
+    console.log($scope.newpost)
+  }
 })

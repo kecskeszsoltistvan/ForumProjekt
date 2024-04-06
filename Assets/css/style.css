@@ -29,6 +29,7 @@ ul {
 
 .nav_img{
     width: 64px;
+    cursor: pointer;
 }
 
 .navbar-toggler, .navbar-toggler-icon{
@@ -214,7 +215,149 @@ h3{
     font-size: 20px;
 }
 
+.kiskep{
+    height: 51px;
+    width: 51px;
+    margin-right: 15px;
+}
+.soros{
+    display: flex;
+    flex: row nowrap;
+    align-content: center;
+    justify-content: space-between;
+} 
+.oszlopos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}  
+.alcím{
+    color: #676F9E;
+    margin: 0px;
+}
+.react{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    color: #676F9E;
+    font-weight: bolder;
+}
+.react h5{
+    color: #676F9E;
+}
+
+.react img{
+    height: 33px;
+    width: 33px;
+    margin: 0px 5px 0px 5px;
+}
+.hashtag{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 50px;
+}
+.hashtag p{
+    font-weight: bold;
+    background-color: #434669;
+    border-radius: 20px;
+    padding: 5px 10px 5px;
+    margin: 0px;
+}
+#post-button{
+    background-color:#676F9E;
+    border-radius: 15px;
+    text-align: center;
+    font-size: larger;
+    padding: 10px 0px 10px;
+    cursor: pointer;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+    .post-interface{
+    padding: 20px 20px 10px 20px;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: justify;
+    margin: 10px 10px 10px 200px;
+    color: white;
+    font-size: 18px;
+    width: 35vw;
+    min-width: 325px;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: #2E3150;
+    align-self: flex-start;
+    min-width: 325px;
+    max-width: 325px;
+}
+.post-rendezes{
+    margin: 10px 3vw 10px;
+    gap: 15px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    min-width: 1000px;
+}
+.posts{
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 750px;
+    padding: 0px;
+}
+
+.posts:last-child{
+    margin-bottom: 70px;
+}
+.contents{
+    padding: 20px 20px 10px 30px;
+    border-radius: 20px;
+    text-align: justify;
+    margin: 10px 0px;
+    color: white;
+    font-size: 18px;
+    width: 60vw;
+    min-width: 500px;
+    max-width: 650px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: #2E3150;
+}
+/* Ha van isten az most nyaraláson max, mert ezt szörnyű javítani*/
+@media only screen and (max-width: 1085px) {
+    .post-rendezes{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: stretch;
+        min-width: 1000px;
+    }
+    .kategoriak:last-child{
+        margin-top: 370px;
+    }
+    .posts{
+        margin: 0px auto 0px 17vw; /*A marginnal csak az a baj, hogy az auto az rohadtul nem auto és statikus más meg csak kicsit működik*/
+    }
+    .contents{
+        width: 500px;
+        min-width: 50%;
+    }
+    .post-interface {
+        min-width: 50%;
+        margin: 0px auto 0px 17vw;
+    }
+}
+
+
 .kategoriak{
+    cursor: pointer;
     background-color: #2E3150;
     padding: 20px 20px 40px 20px;
     border-radius: 20px;

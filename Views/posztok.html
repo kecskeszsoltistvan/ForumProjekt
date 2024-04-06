@@ -1,0 +1,62 @@
+<h1>Kategória oldal</h1>
+        <div class="post-rendezes">
+            
+            <div class="post-interface">
+                <div class="soros">
+                    <div class="soros">
+                        <img class="kiskep" src="icons/profile-user.png">
+                        <div class="oszlopos">
+                            <h5 style="margin-right: 20px; font-size:larger; font-weight: bold;">{{currentUser.name}}</h5>
+                            <h6 class="alcím">Jogosultság</h6>
+                        </div>
+                    </div>
+                    <img class="kiskep" src="icons/more.png">
+                </div>
+                <hr>
+                <button type="button" class="btn" id="post-button" data-bs-toggle="modal" data-bs-target="#Post_modal" >Poszt létrehozása</button>
+            </div>
+            
+            <div class="posts">
+                <div class="contents" ng-repeat="item in posts">
+                    <div class="soros">
+                        <h5><img class="kiskep" src="icons/profile-user.png">{{item.user_name}}</h5>
+                        <img class="kiskep" src="icons/more.png">
+                    </div>
+                    <hr>
+                    <h2>{{item.title}}</h2>
+                    <p>{{item.text}}</p>
+                    <hr>
+                    <div class="react">
+                        <p><img src="icons/like.png"> - <img src="icons/dislike.png"> - <img src="icons/comment.png"> - </p>
+                        <p class="datum"><strong>{{item.created_at.split('T')[0]}}</strong></p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="modal fade" id="Post_modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5 login-title" id="exampleModalLabel1">Post létrehozása</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Poszt címe</label>
+                                <input id="title" type="text" class="form-control" ng-model="newpost.title">
+                            </div>
+                            <div class="mb-3">
+                                <label for="text">Poszt tartalma</label>
+                                <textarea class="form-control" id="text" rows="5" ng-model="newpost.text"></textarea>
+                            </div>
+                            <div class="mb-3 d-flex justify-content-around">
+                                <button type="submit" class="btn" ng-click="newPost()">Közzététel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>

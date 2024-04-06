@@ -1,6 +1,7 @@
-    <h1>Összes kategória</h1>
-    <div id="category-holder">
-        <div class="kategoriak" ng-repeat="item in categories">
+<h1>Összes kategória</h1>
+<div id="category-holder">
+    <div class="kategoriak" ng-repeat="item in categories">
+        <div ng-click="category(item.ID)">
             <div class="header">
                 <h2 class="cim">{{item.title}}</h2>
             </div>
@@ -9,3 +10,5 @@
             <p class="datum">{{item.created_at.split('T')[0]}}</p>
         </div>
     </div>
+</div>
+
