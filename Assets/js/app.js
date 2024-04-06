@@ -13,6 +13,8 @@ app.run(function($rootScope){
     axios.get(`${$rootScope.serverUrl}/categories`).then(res=>{
         $rootScope.categories = res.data;
     })
+    
+    $rootScope.posts = [];
     axios.get(`${$rootScope.serverUrl}/posts`).then(res=>{
         $rootScope.posts = res.data;
         res.data.forEach(item => {

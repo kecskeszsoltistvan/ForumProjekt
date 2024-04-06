@@ -74,9 +74,19 @@ app.controller('legutobbi', function($scope){
   }) 
 
 app.controller('forum-renderer', function($scope, ngNotify, $rootScope, $location){
-  $scope.category = function(id){
+  
+  $scope.category = async function(id){
     console.log(id);
-    $location.path('/post')  
+      await axios.get(`${$rootScope.serverUrl}/posts/category_id/eq/${id}`).then(res=>{
+        $rootScope.posts = res.data;
+        res.data.forEach(item => {
+            axios.get(`${$rootScope.serverUrl}/users/ID/eq/${item.user_id}`).then(res=>{
+                item.user_name = res.data[0].name
+            })
+        });
+    })
+      
+    $location.path('/post');
   }
 })
 app.controller('posts', function($scope, $rootScope){
