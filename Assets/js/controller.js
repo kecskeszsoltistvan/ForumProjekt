@@ -85,12 +85,17 @@ app.controller('forum-renderer', function($scope, ngNotify, $rootScope, $locatio
             })
         });
     })
-      
     $location.path('/post');
   }
 })
+
 app.controller('posts', function($scope, $rootScope){
   $scope.postRender = function(id){
-    console.log(id);
+    console.log(id)
+  }
+  
+  $scope.newPost = function(){
+    $scope.newpost = {}
+    console.log("ASD")
   }
 })

@@ -4,12 +4,18 @@ app.run(function($rootScope){
     if(localStorage.getItem("loggedUser") != null){
         sessionStorage.setItem('loggedUser', localStorage.getItem("loggedUser"));
     }
+
+    $rootScope.posts = [];
+    $rootScope.categories = [];
+
     $rootScope.currentUser= sessionStorage.getItem('loggedUser');
     $rootScope.serverUrl = "http://localhost:3000"
     
     $rootScope.title = "Fórum";
+    $rootScope.currentDate = new Date().toDateString();
 
-    $rootScope.categories = [];
+    
+
     axios.get(`${$rootScope.serverUrl}/categories`).then(res=>{
         $rootScope.categories = res.data;
     })
@@ -20,6 +26,7 @@ app.run(function($rootScope){
         res.data.forEach(item => {
             axios.get(`${$rootScope.serverUrl}/users/ID/eq/${item.user_id}`).then(res=>{
                 item.user_name = res.data[0].name
+                $rootScope.$apply();
             })
         });
     })
@@ -129,6 +136,3 @@ app.controller("loginUserCtrl",  function($scope, ngNotify, $rootScope){
     }
 })
 
-app.user = function(){
-    
-}
