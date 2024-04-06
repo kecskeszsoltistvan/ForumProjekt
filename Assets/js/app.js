@@ -15,12 +15,14 @@ app.run(function($rootScope){
     
     $rootScope.title = "Fórum";
     $rootScope.currentDate = new Date().toISOString();
-
     
-
+    
+    
     axios.get(`${$rootScope.serverUrl}/categories`).then(res=>{
         $rootScope.categories = res.data;
     })
+    
+    
     
 })
 

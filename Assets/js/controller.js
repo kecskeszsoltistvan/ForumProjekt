@@ -77,13 +77,24 @@ app.controller('forum-renderer', function($scope, ngNotify, $rootScope, $locatio
   $rootScope.category = function(id){
     $rootScope.act_cat_id = id
     localStorage.setItem('act_cat_id', $rootScope.act_cat_id)
+
+    
+
     $location.path('/post')
   }
+
+  
 })
 
   
 
 app.controller('posts', function($scope, $rootScope, ngNotify){
+
+  axios.get(`${$rootScope.serverUrl}/categories/ID/eq/${$rootScope.act_cat_id}`).then(res=>{
+    localStorage.setItem('currentCategory', JSON.stringify(res.data[0]));
+    $rootScope.currentCategory = JSON.parse(localStorage.getItem('currentCategory'));
+  })
+
   axios.get(`${$rootScope.serverUrl}/posts/category_id/eq/${$rootScope.act_cat_id}`).then(res=>{
     $rootScope.posts = res.data;
     res.data.forEach(item => {
@@ -92,7 +103,15 @@ app.controller('posts', function($scope, $rootScope, ngNotify){
             $rootScope.$apply();
         })
     });
+
+    
   })
+
+  
+
+  
+
+  
   //$rootScope.category()
   $scope.postRender = function(id){
     console.log(id)
