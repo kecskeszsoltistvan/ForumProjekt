@@ -13,8 +13,13 @@ app.run(function($rootScope){
     axios.get(`${$rootScope.serverUrl}/categories`).then(res=>{
         $rootScope.categories = res.data;
     })
-    axios.get(`${$rootScope.serverUrl}/comments`).then(res=>{
+    axios.get(`${$rootScope.serverUrl}/posts`).then(res=>{
         $rootScope.posts = res.data;
+        res.data.forEach(item => {
+            axios.get(`${$rootScope.serverUrl}/users/ID/eq/${item.user_id}`).then(res=>{
+                item.user_name = res.data[0].name
+            })
+        });
     })
     
 
