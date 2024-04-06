@@ -80,7 +80,17 @@ app.controller('forum-renderer', function($scope, ngNotify, $rootScope, $locatio
   }
 })
 app.controller('posts', function($scope, ngNotify, $rootScope, $location){
-  postRender = function(id){
+  $scope.IdToName = function(id){
+    let x = "teszt"
+    axios.get(`${$rootScope.serverUrl}/users/ID/eq/${id}`).then(res => {
+      console.log(res.data[0].name)
+       x = res.data[0].name
+       console.log(`x értéke: ${x}`);
+    })
+    console.log(x)
+    return(x);
+  }
+  $scope.postRender = function(id){
     console.log(id);
   }
 })
