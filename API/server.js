@@ -151,7 +151,7 @@ app.patch("/posts/:id", cors(), (req, res)=>{
     let id = req.params.id;
     let data  = req.body;
     
-    pool.query(`UPDATE posts SET user_id=${data.user_id}, category_id=${data.category_id}, title="${data.title}", text="${data.text}", created_at="${data.created_at}" WHERE ID=${id}`, (error, results)=>{
+    pool.query(`UPDATE posts SET title="${data.title}", text="${data.text}" WHERE ID=${id}`, (error, results)=>{
         if (error) throw res.status(500).send(error);
         res.status(200).send(results);
     });
