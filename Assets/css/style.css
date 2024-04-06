@@ -273,7 +273,13 @@ h3{
     font-size: larger;
     padding: 10px 0px 10px;
     cursor: pointer;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+#post-button:hover{
+    background-color: #F9B079;
+}
+
 .post-interface{
     align-self: flex-start;
     min-width: 325px;
