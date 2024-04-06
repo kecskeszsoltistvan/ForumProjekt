@@ -275,39 +275,7 @@ h3{
     cursor: pointer;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-<<<<<<< HEAD
-
-#post-button:hover{
-    background-color: #F9B079;
-}
-
-.post-interface{
-    align-self: flex-start;
-    min-width: 325px;
-    max-width: 325px;
-}
-.post-rendezes{
-    margin: 10px 3vw 10px;
-    gap: 15px;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    min-width: 1000px;
-}
-.posts{
-    display: flex;
-    flex-direction: column;
-    min-width: 300px;
-    max-width: 750px;
-}
-
-.posts:last-child{
-    margin-bottom: 70px;
-}
-.post{
-=======
     .post-interface{
->>>>>>> 22be0671add4d42a86407223685ba0af73113b5e
     padding: 20px 20px 10px 20px;
     border-radius: 20px;
     padding: 40px;

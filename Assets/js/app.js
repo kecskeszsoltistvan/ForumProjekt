@@ -20,8 +20,6 @@ app.run(function($rootScope){
         $rootScope.categories = res.data;
     })
     
-    
-
 })
 
 app.config(function($routeProvider){
