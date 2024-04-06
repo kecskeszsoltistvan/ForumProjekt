@@ -215,6 +215,138 @@ h3{
     font-size: 20px;
 }
 
+.kiskep{
+    height: 51px;
+    width: 51px;
+    margin-right: 15px;
+}
+.soros{
+    display: flex;
+    flex: row nowrap;
+    align-content: center;
+    justify-content: space-between;
+} 
+.oszlopos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}  
+.alcím{
+    color: #676F9E;
+    margin: 0px;
+}
+.react{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    color: #676F9E;
+    font-weight: bolder;
+}
+.react h5{
+    color: #676F9E;
+}
+
+.react img{
+    height: 33px;
+    width: 33px;
+    margin: 0px 5px 0px 5px;
+}
+.hashtag{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 50px;
+}
+.hashtag p{
+    font-weight: bold;
+    background-color: #434669;
+    border-radius: 20px;
+    padding: 5px 10px 5px;
+    margin: 0px;
+}
+#post-button{
+    background-color:#676F9E;
+    border-radius: 15px;
+    text-align: center;
+    font-size: larger;
+    padding: 10px 0px 10px;
+    cursor: pointer;
+}
+.post-interface{
+    align-self: flex-start;
+    min-width: 325px;
+    max-width: 325px;
+}
+.post-rendezes{
+    margin: 10px 3vw 10px;
+    gap: 15px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    min-width: 1000px;
+}
+.posts{
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 750px;
+}
+
+.posts:last-child{
+    margin-bottom: 70px;
+}
+.post{
+    padding: 20px 20px 10px 20px;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: justify;
+    margin: 10px 10px 10px 200px;
+    color: white;
+    font-size: 18px;
+    width: 35vw;
+    min-width: 325px;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: #2E3150;
+}
+
+.contents{
+    padding: 20px 20px 10px 30px;
+    border-radius: 20px;
+    text-align: justify;
+    margin: 10px 100px 10px 10px;
+    color: white;
+    font-size: 18px;
+    width: 60vw;
+    min-width: 500px;
+    max-width: 650px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: #2E3150;
+}
+
+@media only screen and (max-width: 1000px) {
+    .kategoriak:last-child{
+        margin-top: 370px;
+    }
+    .contents{
+        min-width: 100%;
+        margin-left: 50%;
+    }
+    .post {
+        margin-right: 10%;  
+        min-width: 50%;
+    }
+}
+
+
 .kategoriak{
     cursor: pointer;
     background-color: #2E3150;

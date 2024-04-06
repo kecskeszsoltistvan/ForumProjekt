@@ -10,10 +10,13 @@ app.run(function($rootScope){
     $rootScope.title = "Fórum";
 
     $rootScope.categories = [];
-
     axios.get(`${$rootScope.serverUrl}/categories`).then(res=>{
         $rootScope.categories = res.data;
     })
+    axios.get(`${$rootScope.serverUrl}/comments`).then(res=>{
+        $rootScope.posts = res.data;
+    })
+    
 
 })
 
@@ -50,6 +53,10 @@ app.config(function($routeProvider){
     .when("/forum", {
         templateUrl: "Views/forum.html",
         controller: 'forum-renderer'
+    })
+    .when("/post", {
+        templateUrl: "Views/posztok.html",
+        controller: 'posts'
     })
     .otherwise(
         {redirecTo: "/main"}

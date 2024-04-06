@@ -1,0 +1,36 @@
+<h1>Kategória oldal</h1>
+        <div class="post-rendezes">
+            
+            <div class="post post-interface">
+                <div class="soros">
+                    <div class="soros">
+                        <img class="kiskep" src="icons/profile-user.png">
+                        <div class="oszlopos">
+                            <h5 style="margin-right: 20px; font-size:larger; font-weight: bold;">Admin</h5>
+                            <h6 class="alcím">Tulajdonos</h6>
+                        </div>
+                    </div>
+                    <img class="kiskep" src="icons/more.png">
+                </div>
+                <hr>
+                <h5 id="post-button">Poszt létrehozása</h5>
+            </div>
+            
+            <div class="posts">
+                <div class="contents" ng-repeat="item in posts">
+                    <div class="soros">
+                        <h5><img class="kiskep" src="icons/profile-user.png">{{item.user_id}}</h5>
+                        <img class="kiskep" src="icons/more.png">
+                    </div>
+                    <hr>
+                    <h2>{{item.title}}</h2>
+                    <p>{{item.text}}</p>
+                    <hr>
+                    <div class="react">
+                        <p><img src="icons/like.png"> - <img src="icons/dislike.png"> - <img src="icons/comment.png"> - </p>
+                        <p class="datum"><strong>{{item.created_at.split('T')[0]}}</strong></p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>

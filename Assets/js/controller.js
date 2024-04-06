@@ -74,8 +74,13 @@ app.controller('legutobbi', function($scope){
   }) 
 
 app.controller('forum-renderer', function($scope, ngNotify, $rootScope, $location){
-  forumRender = function(id){
+  $scope.category = function(id){
+    console.log(id);
+    $location.path('/post')  
+  }
+})
+app.controller('posts', function($scope, ngNotify, $rootScope, $location){
+  postRender = function(id){
     console.log(id);
   }
-
 })
