@@ -409,13 +409,13 @@ p{
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    min-width: 1000px;
+    max-width: 1500px;
+    min-width: 630px;
 }
 .kategoriak{
     display: flex;
     flex-direction: column;
     min-width: 300px;
-    max-width: 750px;
 }
 .kategoriak:last-child{
     margin-bottom: 70px;
@@ -429,8 +429,7 @@ p{
     color: white;
     font-size: 18px;
     width: 60vw;
-    min-width: 500px;
-    max-width: 650px;
+    min-width: auto;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
@@ -447,8 +446,6 @@ p{
     color: white;
     font-size: 18px;
     width: 35vw;
-    min-width: 325px;
-    max-width: 500px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
@@ -456,16 +453,40 @@ p{
     background-color: #2E3150;
 }
 
-@media only screen and (max-width: 1000px) {
-    .kategoriak:last-child{
-        margin-top: 370px;
-    }
+@media only screen and (max-width: 1500px) {
     .contents{
-        min-width: 100%;
-        margin-left: 50%;
+        min-width: 60vw;
     }
     .post {
-        margin-right: 10%;  
-        min-width: 50%;
+        min-width: 32%;
     }
 }
+
+@media only screen and (max-width: 1000px) {
+    .kategoriak:last-child{
+        margin-top: 400px;
+    }
+    .contents{
+        min-width: 90vw;
+        margin-left: 350px;
+    }
+    .post {
+        margin-right: 180px;  
+        min-width: 80%;
+    }
+    .kategoria-rendezes{
+        padding-left: 25%;
+    }
+}
+@media only screen and (max-width: 845px) {
+    .kategoriak:last-child{
+        margin-top: 400px;
+    }
+    .contents{
+        margin-left: 382px;
+    }
+    .post { 
+        min-width: 50vw;
+    }
+}
+
