@@ -274,30 +274,7 @@ h3{
     padding: 10px 0px 10px;
     cursor: pointer;
 }
-.post-interface{
-    align-self: flex-start;
-    min-width: 325px;
-    max-width: 325px;
-}
-.post-rendezes{
-    margin: 10px 3vw 10px;
-    gap: 15px;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    min-width: 1000px;
-}
-.posts{
-    display: flex;
-    flex-direction: column;
-    min-width: 300px;
-    max-width: 750px;
-}
-
-.posts:last-child{
-    margin-bottom: 70px;
-}
-.post{
+    .post-interface{
     padding: 20px 20px 10px 20px;
     border-radius: 20px;
     padding: 40px;
@@ -313,13 +290,34 @@ h3{
     justify-content: space-around;
     flex-direction: column;
     background-color: #2E3150;
+    align-self: flex-start;
+    min-width: 325px;
+    max-width: 325px;
+}
+.post-rendezes{
+    margin: 10px 3vw 10px;
+    gap: 15px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    min-width: 1000px;
+}
+.posts{
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    max-width: 750px;
+    padding: 0px;
 }
 
+.posts:last-child{
+    margin-bottom: 70px;
+}
 .contents{
     padding: 20px 20px 10px 30px;
     border-radius: 20px;
     text-align: justify;
-    margin: 10px 100px 10px 10px;
+    margin: 10px 0px;
     color: white;
     font-size: 18px;
     width: 60vw;
@@ -331,18 +329,28 @@ h3{
     flex-direction: column;
     background-color: #2E3150;
 }
-
-@media only screen and (max-width: 1000px) {
+/* Ha van isten az most nyaraláson max, mert ezt szörnyű javítani*/
+@media only screen and (max-width: 1085px) {
+    .post-rendezes{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: stretch;
+        min-width: 1000px;
+    }
     .kategoriak:last-child{
         margin-top: 370px;
     }
-    .contents{
-        min-width: 100%;
-        margin-left: 50%;
+    .posts{
+        margin: 0px auto 0px 17vw; /*A marginnal csak az a baj, hogy az auto az rohadtul nem auto és statikus más meg csak kicsit működik*/
     }
-    .post {
-        margin-right: 10%;  
+    .contents{
+        width: 500px;
         min-width: 50%;
+    }
+    .post-interface {
+        min-width: 50%;
+        margin: 0px auto 0px 17vw;
     }
 }
 
