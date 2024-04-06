@@ -83,7 +83,7 @@ app.controller('forum-renderer', function($scope, ngNotify, $rootScope, $locatio
 
   
 
-app.controller('posts', function($scope, $rootScope){
+app.controller('posts', function($scope, $rootScope, ngNotify){
   axios.get(`${$rootScope.serverUrl}/posts/category_id/eq/${$rootScope.act_cat_id}`).then(res=>{
     $rootScope.posts = res.data;
     res.data.forEach(item => {
@@ -98,10 +98,25 @@ app.controller('posts', function($scope, $rootScope){
     console.log(id)
   }
 
+  $scope.newpost = {}
   $scope.newPost = function(){
-    $scope.newpost = {}
 
-    $scope.newpost.post_
-    console.log("ASD")
+    if($rootScope.currentUser != null){
+      if($scope.newpost.text == null || $scope.newpost.title == null || $scope.newpost.text == "" || $scope.newpost.title == ""){
+        ngNotify.set(`Nem adtál meg címet vagy tartalmat.`, "error");
+      }else{
+        $scope.newpost.user_id = $rootScope.currentUser.ID
+        $scope.newpost.created_at = $rootScope.currentDate
+
+        axios.post(`${$rootScope.serverUrl}/posts/category/${$rootScope.act_cat_id}`, $scope.newpost).then(() => {
+          ngNotify.set("Sikeres posztolás!", "success")
+          location.reload();
+        });
+      }
+    }else{
+      ngNotify.set(`Nem vagy bejelentkezve.`, "error");
+    }
+
+    console.log($scope.newpost)
   }
 })

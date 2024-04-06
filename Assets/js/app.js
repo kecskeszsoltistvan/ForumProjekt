@@ -8,13 +8,13 @@ app.run(function($rootScope){
     $rootScope.posts = [];
     $rootScope.categories = [];
     
-    $rootScope.act_cat_id = localStorage.getItem('act_cat_id');
+    $rootScope.act_cat_id = JSON.parse(localStorage.getItem('act_cat_id'));
 
-    $rootScope.currentUser= sessionStorage.getItem('loggedUser');
+    $rootScope.currentUser= JSON.parse(sessionStorage.getItem('loggedUser'));
     $rootScope.serverUrl = "http://localhost:3000"
     
     $rootScope.title = "Fórum";
-    $rootScope.currentDate = new Date().toDateString();
+    $rootScope.currentDate = new Date().toISOString();
 
     
 
