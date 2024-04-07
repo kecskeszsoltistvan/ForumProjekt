@@ -226,6 +226,9 @@ h3{
     align-content: center;
     justify-content: space-between;
 } 
+.soros-gap {
+    gap: 1vw;
+}
 .oszlopos{
     display: flex;
     flex-direction: column;
@@ -234,6 +237,11 @@ h3{
 .alcím{
     color: #676F9E;
     margin: 0px;
+}
+#index-username{
+    margin-right: 5px;
+    align-self: center;
+    font-size: 1.5em;
 }
 .react{
     display: flex;
@@ -276,7 +284,6 @@ h3{
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 .post-interface{
-    padding: 20px 20px 10px 30px;
     border-radius: 20px;
     padding: 40px;
     text-align: justify;
@@ -292,6 +299,21 @@ h3{
     flex-direction: column;
     background-color: #2E3150;
     align-self: flex-start;
+}
+.comment-interface{
+    border-radius: 20px;
+    padding: 40px;
+    text-align: justify;
+    margin: 10px auto 10px;
+    color: white;
+    font-size: 18px;
+    width: 30vw;
+    min-width: 325px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: #2E3150;
 }
 .post-rendezes{
     margin: 10px 3vw 10px;
@@ -314,8 +336,7 @@ h3{
     margin-top: 20px;
 }
 #commentbox{
-    width: 50vw;
-    margin-left: 5vw;
+    width: 65vw;
 }
 #commentbox h2{
     text-align: center;
@@ -332,7 +353,7 @@ h3{
     color: white;
     font-size: 18px;
     width: 60vw;
-    min-width: 500px;
+    min-width: 50%;
     max-width: 1200px;
     display: flex;
     flex-wrap: nowrap;
@@ -367,6 +388,12 @@ h3{
     .post-interface {
         min-width: 70vw;
         margin: 0px;
+    }
+    .soros-gap{
+        flex-direction: column;
+    }
+    .comment-interface{
+        min-width: 70vw;
     }
 }
 

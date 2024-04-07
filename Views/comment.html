@@ -1,3 +1,4 @@
+
 <div id="postcomments" class="posts">
     <div class="comments">
             <div id="commentbox" class="contents">
@@ -19,18 +20,37 @@
             </div>
 
     </div>
-    <div class="contents" ng-repeat="item in posts">
-        <div class="soros">
-            <h5><img class="kiskep" src="icons/profile-user.png">{{item.user_name}}</h5>
-            <img class="kiskep" src="icons/more.png">
+
+    <div class="soros soros-gap">
+        <div class="contents" ng-repeat="item in posts">
+            <div class="soros">
+                <h5><img class="kiskep" src="icons/profile-user.png">{{item.user_name}}</h5>
+                <img class="kiskep" src="icons/more.png">
+            </div>
+            <hr>
+            <h2>{{item.title}}</h2>
+            <p>{{item.text}}</p>
+            <hr>
+            <div class="react">
+                <p><img src="icons/like.png"> - <img src="icons/dislike.png"> - <a ng-click="teszt(item.ID)"><img class="comment-icon" src="icons/comment.png"></a> - </p>
+                <p class="datum"><strong>{{item.created_at.split('T')[0]}}</strong></p>
+            </div>
         </div>
-        <hr>
-        <h2>{{item.title}}</h2>
-        <p>{{item.text}}</p>
-        <hr>
-        <div class="react">
-            <p><img src="icons/like.png"> - <img src="icons/dislike.png"> - <a ng-click="teszt(item.ID)"><img class="comment-icon" src="icons/comment.png"></a> - </p>
-            <p class="datum"><strong>{{item.created_at.split('T')[0]}}</strong></p>
+        <div class="comment-interface">
+            <div class="soros">
+                <div class="soros">
+                    <img class="kiskep" src="icons/profile-user.png">
+                    <div class="oszlopos">
+                        <h5 style="margin-right: 20px; font-size:larger; font-weight: bold;">{{currentUser.name}}</h5>
+                        <h6 class="alcím">Jogosultság</h6>
+                    </div>
+                </div>
+                <img class="kiskep" src="icons/more.png">
+            </div>
+            <hr>
+            <button type="button" class="btn" id="post-button" data-bs-toggle="modal" data-bs-target="#Post_modal">Komment létrehozása</button>
         </div>
     </div>
+
+    
 </div>

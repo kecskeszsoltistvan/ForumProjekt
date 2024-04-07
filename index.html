@@ -27,10 +27,10 @@
                 </div>
             </div>
             <div class="position-absolute top-0 end-0 mt-2 d-flex">
-                <h2 class="alcím">{{currentUser.name}}</h2>
                 <a class="nav-link" href="#!/postalada"><img class="nav_img png-mid m-1" src="icons/email.png"></a>
                 <a class="nav-link" ng-if="!currentUser" data-bs-toggle="modal" data-bs-target="#Reg_modal"><img class="nav_img png-mid m-1" src="icons/profile-user.png"></a>
                 <a class="nav-link" href="#!/profil" ng-if="currentUser"><img class="nav_img png-mid m-1" src="icons/profile-user.png"></a>
+                <h2 class="alcím" id="index-username">{{currentUser.name}}</h2>
             </div>
         </div>
     </nav>
