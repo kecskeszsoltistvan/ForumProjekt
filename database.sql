@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Ápr 03. 11:31
--- Kiszolgáló verziója: 10.4.6-MariaDB
--- PHP verzió: 7.3.8
+-- Létrehozás ideje: 2024. Ápr 05. 19:36
+-- Kiszolgáló verziója: 10.4.28-MariaDB
+-- PHP verzió: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
   `ID` int(11) NOT NULL,
-  `title` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
-  `body` text COLLATE utf8_hungarian_ci NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `body` text NOT NULL,
   `created_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -40,7 +39,30 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`ID`, `title`, `body`, `created_at`) VALUES
-(1, 'Teszt Kategória', 'Ez egy teszt kategóra egy kis leírással meg címmel, ide nyomatjuk majd a dolgokat amíg nem működik megfelelően az oldal.', '2024-03-25');
+(1, 'Teszt Kategória', 'Ez egy teszt kategóra egy kis leírással meg címmel, ide nyomatjuk majd a dolgokat amíg nem működik megfelelően az oldal.', '2024-03-25'),
+(2, 'Almákok', 'Ide tegyetek almáát. Légyszi.', '2024-04-01'),
+(3, 'Törlésre', 'Ezzel a kategóriával tesztelem majd a törlést', '2024-04-01');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `comments`
+--
+
+CREATE TABLE `comments` (
+  `ID` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `text` text NOT NULL,
+  `created_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `comments`
+--
+
+INSERT INTO `comments` (`ID`, `post_id`, `user_id`, `text`, `created_at`) VALUES
+(1, 1, 3, 'Helló mindenki én csak itt vagyok', '2024-04-05');
 
 -- --------------------------------------------------------
 
@@ -66,8 +88,8 @@ CREATE TABLE `posts` (
   `ID` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
-  `title` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
-  `text` text COLLATE utf8_hungarian_ci NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `text` text NOT NULL,
   `created_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -76,7 +98,9 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`ID`, `user_id`, `category_id`, `title`, `text`, `created_at`) VALUES
-(1, 3, 1, 'Teszt poszt 01', 'Teszt poszt valami', '2024-03-25');
+(1, 3, 1, 'Teszt poszt 01', 'Teszt poszt valami', '2024-03-25'),
+(3, 3, 1, 'Teszt poszt 03', 'Teszt poszt valami', '2024-03-24'),
+(7, 3, 3, 'asdasf', 'Törlésre kerül', '2024-04-01');
 
 -- --------------------------------------------------------
 
@@ -86,9 +110,9 @@ INSERT INTO `posts` (`ID`, `user_id`, `category_id`, `title`, `text`, `created_a
 
 CREATE TABLE `users` (
   `ID` int(11) NOT NULL,
-  `name` varchar(32) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `email` varchar(32) COLLATE utf8_hungarian_ci DEFAULT NULL,
-  `password` varchar(52) COLLATE utf8_hungarian_ci DEFAULT NULL
+  `name` varchar(32) DEFAULT NULL,
+  `email` varchar(32) DEFAULT NULL,
+  `password` varchar(52) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
@@ -113,7 +137,7 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `post_id` (`post_id`,`user_id`),
+  ADD KEY `post_id` (`post_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
@@ -138,13 +162,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT a táblához `categories`
 --
 ALTER TABLE `categories`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT a táblához `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT a táblához `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT a táblához `users`

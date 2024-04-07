@@ -77,34 +77,98 @@ app.controller('forum-renderer', function($rootScope, $location){
   $rootScope.category = function(id){
     $rootScope.act_cat_id = id
     localStorage.setItem('act_cat_id', $rootScope.act_cat_id)
+
+    
+
     $location.path('/post')
   }
+
+  
 })
 
 
 app.controller('posts', function($scope, $rootScope, ngNotify, $location){
+  
+  axios.get(`${$rootScope.serverUrl}/categories/ID/eq/${$rootScope.act_cat_id}`).then(res=>{
+    localStorage.setItem('currentCategory', JSON.stringify(res.data[0]));
+    $rootScope.currentCategory = JSON.parse(localStorage.getItem('currentCategory'));
+  })
+
   axios.get(`${$rootScope.serverUrl}/posts/category_id/eq/${$rootScope.act_cat_id}`).then(res=>{
     $rootScope.posts = res.data;
     res.data.forEach(item => {
-        axios.get(`${$rootScope.serverUrl}/users/ID/eq/${item.user_id}`).then(res=>{
-            item.user_name = res.data[0].name
-            $rootScope.$apply();
-        })
-    });
+      axios.get(`${$rootScope.serverUrl}/users/ID/eq/${item.user_id}`).then(res=>{
+        item.user_name = res.data[0].name
+        $rootScope.$apply();
+      })
+    });    
   })
-
   $scope.teszt = function(post_id){
     $rootScope.act_post_id = post_id
     localStorage.setItem('act_cat_id', $rootScope.act_post_id)
     $location.path('/comment')
   }
 
+  
+  $scope.patchpost = {}
+  $scope.patch_id = 0
+  $scope.access = false
+
+  $scope.post_id = function(id, title, text){
+    $scope.patch_id = id
+    $scope.patchpost.title = title
+    $scope.patchpost.text = text
+
+    axios.get(`${$rootScope.serverUrl}/posts/ID/eq/${id}`).then(res=>{
+      console.log(res.data)
+      if($rootScope.currentUser.ID == res.data[0].user_id){
+        $scope.access = true
+        ngNotify.set(`Nyugodtan szerkesztheted ezt a posztot.`, "alert");
+      }else{
+        $scope.access = false
+        ngNotify.set(`Nem te vagy a létrehozó.`, "error");
+      }
+    })
+  }
+
+  $scope.changePost = function(){
+    if($scope.access){
+      if($scope.patchpost.text == null || $scope.patchpost.title == null || $scope.patchpost.text == "" || $scope.patchpost.title == ""){
+        ngNotify.set(`Nem adtál meg címet vagy tartalmat.`, "error");
+      }else{
+        if(confirm("Biztosan módosítja ezt a posztot?")){
+          axios.patch(`${$rootScope.serverUrl}/posts/${$scope.patch_id}`, $scope.patchpost).then(() => {
+            ngNotify.set("Sikeres módosítás!", "success")
+          });
+          location.reload();
+        }
+      }
+    }else{
+      ngNotify.set("Még mindig nincs jogosultságod.", "error")
+    }
+  }
+  
+  $scope.deletePost = function(){
+    if($scope.access){
+      if(confirm("Biztosan törli ezt a posztot?")){
+        axios.delete(`${$rootScope.serverUrl}/posts/${$scope.patch_id}`).then(() => {
+          ngNotify.set("Sikeres törlés!", "success")
+        });
+        location.reload();
+      }
+    }else{
+      ngNotify.set("Még mindig nincs jogosultságod.", "error")
+    }
+  }
+  
+  
+  
+  $scope.newpost = {}
   //$rootScope.category()
   $scope.postRender = function(id){
     console.log(id)
   }
 
-  $scope.newpost = {}
   $scope.newPost = function(){
 
     if($rootScope.currentUser != null){
@@ -116,14 +180,12 @@ app.controller('posts', function($scope, $rootScope, ngNotify, $location){
 
         axios.post(`${$rootScope.serverUrl}/posts/category/${$rootScope.act_cat_id}`, $scope.newpost).then(() => {
           ngNotify.set("Sikeres posztolás!", "success")
-          location.reload();
         });
+        location.reload();
       }
     }else{
       ngNotify.set(`Nem vagy bejelentkezve.`, "error");
     }
-
-    console.log($scope.newpost)
   }
 })
 

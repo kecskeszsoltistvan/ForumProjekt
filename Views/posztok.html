@@ -1,4 +1,4 @@
-<h1>Kategória oldal</h1>
+<h1>{{currentCategory.title}}</h1>
         <div class="post-rendezes">
             
             <div class="post-interface">
@@ -13,14 +13,14 @@
                     <img class="kiskep" src="icons/more.png">
                 </div>
                 <hr>
-                <button type="button" class="btn" id="post-button" data-bs-toggle="modal" data-bs-target="#Post_modal" >Poszt létrehozása</button>
+                <button type="button" class="btn" id="post-button" data-bs-toggle="modal" data-bs-target="#Post_modal">Poszt létrehozása</button>
             </div>
             
             <div class="posts">
                 <div class="contents" ng-repeat="item in posts">
                     <div class="soros">
                         <h5><img class="kiskep" src="icons/profile-user.png">{{item.user_name}}</h5>
-                        <img class="kiskep" src="icons/more.png">
+                        <img class="kiskep" src="icons/more.png" data-bs-toggle="modal" data-bs-target="#Edit_modal" ng-click="post_id(item.ID, item.title, item.text)">
                     </div>
                     <hr>
                     <h2>{{item.title}}</h2>
@@ -54,6 +54,33 @@
                             </div>
                             <div class="mb-3 d-flex justify-content-around">
                                 <button type="submit" class="btn" ng-click="newPost()">Közzététel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="Edit_modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h1 class="modal-title fs-5 login-title" id="exampleModalLabel1">Post módosítás</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Poszt címe</label>
+                                <input id="title" type="text" class="form-control" ng-model="patchpost.title">
+                            </div>
+                            <div class="mb-3">
+                                <label for="text">Poszt tartalma</label>
+                                <textarea class="form-control" id="text" rows="5" ng-model="patchpost.text"></textarea>
+                            </div>
+                            <div class="mb-3 d-flex justify-content-around">
+                                <button type="submit" class="btn" ng-click="changePost()">Módosítás mentése</button>
+                                <button type="submit" class="btn" ng-click="deletePost()">Poszt törlése</button>
                             </div>
                         </form>
                     </div>
