@@ -275,12 +275,12 @@ h3{
     cursor: pointer;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-    .post-interface{
-    padding: 20px 20px 10px 20px;
+.post-interface{
+    padding: 20px 20px 10px 30px;
     border-radius: 20px;
     padding: 40px;
     text-align: justify;
-    margin: 10px 10px 10px 200px;
+    margin: 10px 10px 10px 100px;
     color: white;
     font-size: 18px;
     width: 35vw;
@@ -292,8 +292,6 @@ h3{
     flex-direction: column;
     background-color: #2E3150;
     align-self: flex-start;
-    min-width: 325px;
-    max-width: 325px;
 }
 .post-rendezes{
     margin: 10px 3vw 10px;
@@ -305,10 +303,22 @@ h3{
 }
 .posts{
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     min-width: 300px;
-    max-width: 750px;
+    max-width: 1200px;
     padding: 0px;
+}
+#postcomments{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+#commentbox{
+    width: 50vw;
+    margin-left: 5vw;
+}
+#commentbox h2{
+    text-align: center;
 }
 
 .posts:last-child{
@@ -323,12 +333,15 @@ h3{
     font-size: 18px;
     width: 60vw;
     min-width: 500px;
-    max-width: 650px;
+    max-width: 1200px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
     flex-direction: column;
     background-color: #2E3150;
+}
+.comment-icon{
+    cursor: pointer;
 }
 /* Ha van isten az most nyaraláson max, mert ezt szörnyű javítani*/
 @media only screen and (max-width: 1085px) {
@@ -337,21 +350,23 @@ h3{
         flex-direction: column;
         justify-content: space-around;
         align-items: stretch;
-        min-width: 1000px;
+        margin: 0px calc(50vw - 35vw) 0px;
+        width: 70vw;
     }
     .kategoriak:last-child{
         margin-top: 370px;
     }
     .posts{
-        margin: 0px auto 0px 17vw; /*A marginnal csak az a baj, hogy az auto az rohadtul nem auto és statikus más meg csak kicsit működik*/
+        width: 70vw;
+        /*margin: 0px auto 0px 17vw; A marginnal csak az a baj, hogy az auto az rohadtul nem auto és statikus más meg csak kicsit működik*/
     }
     .contents{
-        width: 500px;
+        width: 70vw;
         min-width: 50%;
     }
     .post-interface {
-        min-width: 50%;
-        margin: 0px auto 0px 17vw;
+        min-width: 70vw;
+        margin: 0px;
     }
 }
 
