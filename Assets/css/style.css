@@ -328,6 +328,9 @@ h3{
     flex-direction: column;
     background-color: #2E3150;
 }
+.comment-icon{
+    cursor: pointer;
+}
 /* Ha van isten az most nyaraláson max, mert ezt szörnyű javítani*/
 @media only screen and (max-width: 1085px) {
     .post-rendezes{

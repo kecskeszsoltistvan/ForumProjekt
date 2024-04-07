@@ -62,6 +62,10 @@ app.config(function($routeProvider){
         templateUrl: "Views/posztok.html",
         controller: 'posts'
     })
+    .when("/comment", {
+        templateUrl: "Views/comment.html",
+        controller: 'comments'
+    })
     .otherwise(
         {redirecTo: "/main"}
     )

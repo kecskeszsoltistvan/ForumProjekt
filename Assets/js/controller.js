@@ -73,7 +73,7 @@ app.controller('legutobbi', function($scope){
     
   }) 
 
-app.controller('forum-renderer', function($scope, ngNotify, $rootScope, $location){
+app.controller('forum-renderer', function($rootScope, $location){
   $rootScope.category = function(id){
     $rootScope.act_cat_id = id
     localStorage.setItem('act_cat_id', $rootScope.act_cat_id)
@@ -81,9 +81,8 @@ app.controller('forum-renderer', function($scope, ngNotify, $rootScope, $locatio
   }
 })
 
-  
 
-app.controller('posts', function($scope, $rootScope, ngNotify){
+app.controller('posts', function($scope, $rootScope, ngNotify, $location){
   axios.get(`${$rootScope.serverUrl}/posts/category_id/eq/${$rootScope.act_cat_id}`).then(res=>{
     $rootScope.posts = res.data;
     res.data.forEach(item => {
@@ -93,6 +92,13 @@ app.controller('posts', function($scope, $rootScope, ngNotify){
         })
     });
   })
+
+  $scope.teszt = function(post_id){
+    $rootScope.act_post_id = post_id
+    localStorage.setItem('act_cat_id', $rootScope.act_post_id)
+    $location.path('/comment')
+  }
+
   //$rootScope.category()
   $scope.postRender = function(id){
     console.log(id)
@@ -119,4 +125,19 @@ app.controller('posts', function($scope, $rootScope, ngNotify){
 
     console.log($scope.newpost)
   }
+})
+
+app.controller('comments', function($scope, $rootScope, ngNotify, $location){
+
+  axios.get(`${$rootScope.serverUrl}/comments/post_id/eq/${$rootScope.act_post_id}`).then(res=>{
+    $rootScope.posts = res.data;
+    res.data.forEach(item => {
+        axios.get(`${$rootScope.serverUrl}/users/ID/eq/${item.user_id}`).then(res=>{
+            item.user_name = res.data[0].name
+            $rootScope.$apply();
+        })
+    });
+  })
+
+  console.log("Kommentek");
 })
