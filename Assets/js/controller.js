@@ -77,16 +77,13 @@ app.controller('forum-renderer', function($rootScope, $location){
   $rootScope.category = function(id){
     $rootScope.act_cat_id = id
     localStorage.setItem('act_cat_id', $rootScope.act_cat_id)
-
-    
-
     $location.path('/post')
   }
 
   
 })
 
-
+// Posts
 app.controller('posts', function($scope, $rootScope, ngNotify, $location){
   
   axios.get(`${$rootScope.serverUrl}/categories/ID/eq/${$rootScope.act_cat_id}`).then(res=>{
@@ -101,11 +98,16 @@ app.controller('posts', function($scope, $rootScope, ngNotify, $location){
         item.user_name = res.data[0].name
         $rootScope.$apply();
       })
+
+      axios.get(`${$rootScope.serverUrl}/comments/post_id/eq/${item.ID}`).then(res=>{
+        item.comments = res.data.length
+      })
+
     });    
   })
-  $scope.teszt = function(post_id){
+  $scope.go_post = function(post_id){
     $rootScope.act_post_id = post_id
-    localStorage.setItem('act_cat_id', $rootScope.act_post_id)
+    localStorage.setItem('act_post_id', $rootScope.act_post_id)
     $location.path('/comment')
   }
 
@@ -164,10 +166,6 @@ app.controller('posts', function($scope, $rootScope, ngNotify, $location){
   
   
   $scope.newpost = {}
-  //$rootScope.category()
-  $scope.postRender = function(id){
-    console.log(id)
-  }
 
   $scope.newPost = function(){
 
@@ -189,7 +187,14 @@ app.controller('posts', function($scope, $rootScope, ngNotify, $location){
   }
 })
 
+
+// Comments
 app.controller('comments', function($scope, $rootScope, ngNotify, $location){
+
+  axios.get(`${$rootScope.serverUrl}/posts/ID/eq/${$rootScope.act_post_id}`).then(res=>{
+    localStorage.setItem('currentPost', JSON.stringify(res.data[0]));
+    $rootScope.currentCategory = JSON.parse(localStorage.getItem('currentPost'));
+  })
 
   axios.get(`${$rootScope.serverUrl}/posts/id/eq/${$rootScope.act_post_id}`).then(res=>{
     $rootScope.posts = res.data;
@@ -200,15 +205,100 @@ app.controller('comments', function($scope, $rootScope, ngNotify, $location){
         })
     });
   })
+
   axios.get(`${$rootScope.serverUrl}/comments/post_id/eq/${$rootScope.act_post_id}`).then(res=>{
     $rootScope.comments = res.data;
     res.data.forEach(item => {
         axios.get(`${$rootScope.serverUrl}/users/ID/eq/${item.user_id}`).then(res=>{
-            item.user_name = res.data[0].name;
+            item.user_name = res.data[0].name
             $rootScope.$apply();
         })
     });
   })
 
-  console.log("Kommentek");
+  
+
+  $scope.newcomment = {}
+
+  $scope.newComment = function(){
+    
+    if($rootScope.currentUser != null){
+      if($scope.newcomment.text == null ||  $scope.newcomment.text == ""){
+        ngNotify.set(`Nem adtál meg tartalmat.`, "error");
+      }else{
+        $scope.newcomment.user_id = $rootScope.currentUser.ID
+        $scope.newcomment.created_at = $rootScope.currentDate
+        
+        axios.post(`${$rootScope.serverUrl}/comments/post/${$rootScope.act_post_id}`, $scope.newcomment).then(() => {
+          ngNotify.set("Sikeres kommentelés!", "success")
+        });
+        
+        axios.get(`${$rootScope.serverUrl}/comments/post_id/eq/${$rootScope.act_post_id}`).then(res=>{
+          $rootScope.comments = res.data;
+          res.data.forEach(item => {
+            axios.get(`${$rootScope.serverUrl}/users/ID/eq/${item.user_id}`).then(res=>{
+              item.user_name = res.data[0].name;
+              $rootScope.$apply();
+            })
+          });
+        })
+        console.log($rootScope.comments)
+
+        location.reload();
+      }
+    }else{
+      ngNotify.set(`Nem vagy bejelentkezve.`, "error");
+    }
+  }
+
+  $scope.patchcomment = {}
+  $scope.patch_id = 0
+  $scope.access = false
+
+  $scope.comment_id = function(id, text){
+    $scope.patch_id = id
+    $scope.patchcomment.text = text
+
+
+    axios.get(`${$rootScope.serverUrl}/comments/ID/eq/${id}`).then(res=>{
+
+      if($rootScope.currentUser.ID == res.data[0].user_id){
+        $scope.access = true
+        ngNotify.set(`Nyugodtan szerkesztheted ezt a posztot.`, "alert");
+      }else{
+        $scope.access = false
+        ngNotify.set(`Nem te vagy a létrehozó.`, "error");
+      }
+    })
+  }
+
+  $scope.changeComment = function(){
+    if($scope.access){
+      if($scope.patchcomment.text == null ||  $scope.patchcomment.text == "" ){
+        ngNotify.set(`Nem adtál meg címet vagy tartalmat.`, "error");
+      }else{
+        if(confirm("Biztosan módosítja ezt a posztot?")){
+          axios.patch(`${$rootScope.serverUrl}/comments/${$scope.patch_id}`, $scope.patchcomment).then(() => {
+            ngNotify.set("Sikeres módosítás!", "success")
+          });
+          location.reload();
+        }
+      }
+    }else{
+      ngNotify.set("Még mindig nincs jogosultságod.", "error")
+    }
+  }
+  
+  $scope.deleteComment = function(){
+    if($scope.access){
+      if(confirm("Biztosan törli ezt a posztot?")){
+        axios.delete(`${$rootScope.serverUrl}/comments/${$scope.patch_id}`).then(() => {
+          ngNotify.set("Sikeres törlés!", "success")
+        });
+        location.reload();
+      }
+    }else{
+      ngNotify.set("Még mindig nincs jogosultságod.", "error")
+    }
+  }
 })

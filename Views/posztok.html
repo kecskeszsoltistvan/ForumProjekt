@@ -27,7 +27,7 @@
                     <p>{{item.text}}</p>
                     <hr>
                     <div class="react">
-                        <p><img src="icons/like.png"> - <img src="icons/dislike.png"> - <a ng-click="teszt(item.ID)"><img class="comment-icon" src="icons/comment.png"></a> - </p>
+                        <p><img src="icons/like.png"> - <img src="icons/dislike.png"> - <a ng-click="go_post(item.ID)"><img class="comment-icon" src="icons/comment.png"></a> {{item.comments}} </p>
                         <p class="datum"><strong>{{item.created_at.split('T')[0]}}</strong></p>
                     </div>
                 </div>

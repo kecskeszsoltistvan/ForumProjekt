@@ -1,5 +1,5 @@
 
-<div id="postcomments" class="posts">
+<div id="postcomments" class="posts pb-5">
     <div class="comments">
             <div id="commentbox" class="contents">
                 <h2>Kommentek</h2>
@@ -7,7 +7,7 @@
                     <hr>
                     <div class="soros">
                         <h5><img class="kiskep" src="icons/profile-user.png">{{item.user_name}}</h5>
-                        <img class="kiskep" src="icons/more.png">
+                        <img class="kiskep" src="icons/more.png" data-bs-toggle="modal" data-bs-target="#Edit_modal" ng-click="comment_id(item.ID, item.text)">
                     </div>
                     <p>{{item.text}}</p>
                     <div class="react">
@@ -32,7 +32,7 @@
             <p>{{item.text}}</p>
             <hr>
             <div class="react">
-                <p><img src="icons/like.png"> - <img src="icons/dislike.png"> - <a ng-click="teszt(item.ID)"><img class="comment-icon" src="icons/comment.png"></a> - </p>
+                <p><img src="icons/like.png"> - <img src="icons/dislike.png"> - </p>
                 <p class="datum"><strong>{{item.created_at.split('T')[0]}}</strong></p>
             </div>
         </div>
@@ -53,4 +53,49 @@
     </div>
 
     
+</div>
+
+<div class="modal fade" id="Post_modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5 login-title" id="exampleModalLabel1">Komment létrehozása</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="text">Komment tartalma</label>
+                        <textarea class="form-control" id="text" rows="5" ng-model="newcomment.text"></textarea>
+                    </div>
+                    <div class="mb-3 d-flex justify-content-around">
+                        <button type="submit" class="btn" ng-click="newComment()">Közzététel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="Edit_modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5 login-title" id="exampleModalLabel1">Komment módosítás</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="text">Komment tartalma</label>
+                        <textarea class="form-control" id="text" rows="5" ng-model="patchcomment.text"></textarea>
+                    </div>
+                    <div class="mb-3 d-flex justify-content-around">
+                        <button type="submit" class="btn" ng-click="changeComment()">Módosítás mentése</button>
+                        <button type="submit" class="btn" ng-click="deleteComment()">Komment törlése</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
