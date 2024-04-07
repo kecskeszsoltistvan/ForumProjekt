@@ -76,10 +76,12 @@ app.patch("/users/:pk", cors(), (req, res)=>{
 
 })
 
-// DELETE one user by PK
-app.delete("/users/:pk", cors(), (req, res)=>{
-    let pk = req.params.pk;
-    pool.query(`DELETE FROM users WHERE ID=?`, pk, (error, results)=>{
+// DELETE any
+app.delete("/:table/:field/:value", cors(), (req, res)=>{
+    let table = req.params.table;
+    let field = req.params.field;
+    let value = req.params.value;
+    pool.query(`DELETE FROM ${table} WHERE ${field} = ${value}`, (error, results)=>{
         if (error) throw res.send(error);
         
         res.send(results);

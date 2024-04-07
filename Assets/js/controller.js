@@ -85,7 +85,7 @@ app.controller('forum-renderer', function($rootScope, $location){
 
 // Posts
 app.controller('posts', function($scope, $rootScope, ngNotify, $location){
-  
+
   axios.get(`${$rootScope.serverUrl}/categories/ID/eq/${$rootScope.act_cat_id}`).then(res=>{
     localStorage.setItem('currentCategory', JSON.stringify(res.data[0]));
     $rootScope.currentCategory = JSON.parse(localStorage.getItem('currentCategory'));
@@ -153,10 +153,12 @@ app.controller('posts', function($scope, $rootScope, ngNotify, $location){
   $scope.deletePost = function(){
     if($scope.access){
       if(confirm("Biztosan törli ezt a posztot?")){
-        axios.delete(`${$rootScope.serverUrl}/posts/${$scope.patch_id}`).then(() => {
-          ngNotify.set("Sikeres törlés!", "success")
-        });
-        location.reload();
+        axios.delete(`${$rootScope.serverUrl}/comments/post_id/${$scope.patch_id}`).then(() => {
+          axios.delete(`${$rootScope.serverUrl}/posts/${$scope.patch_id}`).then(() => {
+            ngNotify.set("Sikeres törlés!", "success")
+            location.reload();
+          });
+        })
       }
     }else{
       ngNotify.set("Még mindig nincs jogosultságod.", "error")
