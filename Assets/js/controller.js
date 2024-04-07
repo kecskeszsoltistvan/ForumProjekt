@@ -129,7 +129,7 @@ app.controller('posts', function($scope, $rootScope, ngNotify, $location){
 
 app.controller('comments', function($scope, $rootScope, ngNotify, $location){
 
-  axios.get(`${$rootScope.serverUrl}/comments/post_id/eq/${$rootScope.act_post_id}`).then(res=>{
+  axios.get(`${$rootScope.serverUrl}/posts/id/eq/${$rootScope.act_post_id}`).then(res=>{
     $rootScope.posts = res.data;
     res.data.forEach(item => {
         axios.get(`${$rootScope.serverUrl}/users/ID/eq/${item.user_id}`).then(res=>{
