@@ -7,8 +7,10 @@ app.run(function($rootScope){
 
     $rootScope.posts = [];
     $rootScope.categories = [];
+    $rootScope.comments = [];
     
     $rootScope.act_cat_id = JSON.parse(localStorage.getItem('act_cat_id'));
+    $rootScope.act_post_id = JSON.parse(localStorage.getItem('act_post_id'));
 
     $rootScope.currentUser= JSON.parse(sessionStorage.getItem('loggedUser'));
     $rootScope.serverUrl = "http://localhost:3000"

@@ -138,6 +138,15 @@ app.controller('comments', function($scope, $rootScope, ngNotify, $location){
         })
     });
   })
+  axios.get(`${$rootScope.serverUrl}/comments/post_id/eq/${$rootScope.act_post_id}`).then(res=>{
+    $rootScope.comments = res.data;
+    res.data.forEach(item => {
+        axios.get(`${$rootScope.serverUrl}/users/ID/eq/${item.user_id}`).then(res=>{
+            item.user_name = res.data[0].name;
+            $rootScope.$apply();
+        })
+    });
+  })
 
   console.log("Kommentek");
 })
