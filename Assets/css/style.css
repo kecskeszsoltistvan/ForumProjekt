@@ -1,4 +1,13 @@
-
+ul{
+    display: none;
+    background: #434669;
+    border-radius: 15px;
+}
+.fooldalulelemek{
+    display: block;
+    border-radius: 0px;
+    background-color: #2E3150;
+}
   .profiloldalfelsorolas{
     display: block;
     background-color: #2E3150;
@@ -114,9 +123,6 @@ h1{
     
    
 }
-.rolunkkepek:hover {
-    box-shadow: 12px 12px 10px 1px #676F9E;
-  }
 
 .adatok{
     flex-grow: 2;
