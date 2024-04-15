@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Ápr 05. 19:36
+-- Létrehozás ideje: 2024. Ápr 15. 22:13
 -- Kiszolgáló verziója: 10.4.28-MariaDB
 -- PHP verzió: 8.0.28
 
@@ -39,9 +39,13 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`ID`, `title`, `body`, `created_at`) VALUES
-(1, 'Teszt Kategória', 'Ez egy teszt kategóra egy kis leírással meg címmel, ide nyomatjuk majd a dolgokat amíg nem működik megfelelően az oldal.', '2024-03-25'),
-(2, 'Almákok', 'Ide tegyetek almáát. Légyszi.', '2024-04-01'),
-(3, 'Törlésre', 'Ezzel a kategóriával tesztelem majd a törlést', '2024-04-01');
+(1, 'AI', 'Mindenféle megjegyzések, észrevételek, kérdések a Mesterséges intelligenciával kapcsolatban', '2024-02-08'),
+(2, 'Classdle', 'Egy nagyon jó kis játék. Kisbarátom aki csinálta', '2024-04-15'),
+(3, 'Filmek', 'Filmek véleményezése, ajánlása', '2023-10-17'),
+(4, 'Gaming', 'Játékok bemutatása, véleményezése, ajánlása', '2024-01-17'),
+(5, 'Tech', 'Minden ami tech meg ilyenek', '2024-01-17'),
+(6, 'Az erdő titka', 'https://www.youtube.com/watch?v=0s0IYhEz_2U', '2023-12-24'),
+(7, 'Art', 'Minden ami művészet', '2024-02-21');
 
 -- --------------------------------------------------------
 
@@ -54,27 +58,6 @@ CREATE TABLE `comments` (
   `post_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `text` text NOT NULL,
-  `created_at` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `comments`
---
-
-INSERT INTO `comments` (`ID`, `post_id`, `user_id`, `text`, `created_at`) VALUES
-(1, 1, 3, 'Helló mindenki én csak itt vagyok', '2024-04-05');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `comments`
---
-
-CREATE TABLE `comments` (
-  `ID` int(11) NOT NULL,
-  `post_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `text` text COLLATE utf8_hungarian_ci NOT NULL,
   `created_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -98,9 +81,13 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`ID`, `user_id`, `category_id`, `title`, `text`, `created_at`) VALUES
-(1, 3, 1, 'Teszt poszt 01', 'Teszt poszt valami', '2024-03-25'),
-(3, 3, 1, 'Teszt poszt 03', 'Teszt poszt valami', '2024-03-24'),
-(7, 3, 3, 'asdasf', 'Törlésre kerül', '2024-04-01');
+(1, 1, 1, 'Ai - tapaszalatok', 'Éájt használtunk a projektünkhöz, nagyon király :)', '2024-04-15'),
+(2, 2, 2, 'Ez meg micsoda?', 'Valaki el tudná nekem magyarázni hogy hogyan működik ez az oldal. Sehol nem találtam leírást és kicsit elvesztem.', '2024-04-11'),
+(3, 2, 6, 'Az erdő titka', 'Az emberek\r\nAz erdőbe\r\nBejönnek meg\r\nKimennek\r\nMert az olyan\r\nSűrű hogy már\r\nTényleg hogy már\r\nNagyon sűrű\r\nAztán hogyha\r\nAz erdőből\r\nKijöttek meg\r\nBementek\r\nAz erdőbe\r\nÖssze-vissza\r\nCsavarva meg\r\nTekerve', '2024-02-09'),
+(4, 2, 7, 'Kezdő festőnek tanácsok', 'El szeretnék kezdeni festeni, de nem tudom hogyan kezdjek neki.', '2024-04-09'),
+(5, 2, 3, 'Interstellar ajánlás', 'A napokban megnéztem az Interstellart. Nagyon tetsztt nekem a film. Mindenkinek csak ajánlani tudom, nagyon szép grafikai megvalósítás és jó történet.', '2023-12-13'),
+(6, 1, 4, 'Loloztam, nem kellett volna', 'Ma hajnali 4-ig rankedeztem és mindig noobokat dobott csak be a csapatomba az enemybe meg diásokat. Mikor javítja már ki a riot ezt???', '2024-01-10'),
+(7, 2, 5, 'Vettem egy új alaplapot de nem tudom hogyan kell beszerelni.', 'Vettem egy új alaplapot de nem tudom berakni a gépházba. Nem fér bele és nem tudom hogyan kéne megoldanom ezt a problémát. Kérlek segítsetek. Előre is köszi :)', '2024-04-01');
 
 -- --------------------------------------------------------
 
@@ -120,7 +107,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `name`, `email`, `password`) VALUES
-(3, 'asd', 'asd@asd.asd', 'f10e2821bbbea527ea02200352313bc059445190');
+(1, 'Jani', 'jani@jani.jani', '646c3fad45809c2a958cce7b5df636ef8de93e7d'),
+(2, 'Kis Elemér', 'elemer@elemer.com', 'c6bc29f7fab8395896b940d5af26acf5d0fe2ca1');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -162,13 +150,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT a táblához `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT a táblához `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT a táblához `posts`
@@ -180,7 +168,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Megkötések a kiírt táblákhoz
